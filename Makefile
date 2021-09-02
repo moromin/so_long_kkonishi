@@ -1,5 +1,5 @@
 NAME	= so_long
-SRCS	= main.c arg_check.c
+SRCS	= main.c arg_check.c error_handle.c
 
 OBJS	= $(SRCS:%.c=%.o)
 CC		= gcc
@@ -12,17 +12,20 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C gnl/
-	$(CC) $(CFLAGS) $(OBJS) -Lgnl -lgnl -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
+	make -C libft/
+	$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -Lgnl -lgnl -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	make clean -C gnl/
+	make clean -C libft/
 	rm -f $(OBJS)
 
 fclean: clean
 	make fclean -C gnl/
+	make fclean -C libft/
 	rm -f $(NAME)
 
 re: fclean all
