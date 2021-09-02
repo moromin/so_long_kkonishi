@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	print_args_err(t_vars *vars)
+int	print_args_err(t_vars *vars)
 {
 	ssize_t	res;
 
@@ -13,6 +13,13 @@ void	print_args_err(t_vars *vars)
 		res = write(2, "Map includes invalid character.\n", 32);
 	if (vars->err == LACK_ESSENTIAL_CHAR)
 		res = write(2, "Lack essential character (C, E or P).\n", 38);
+	if (vars->err == NOT_RECTANGULAR)
+		res = write(2, "Map is not rectangular.\n", 24);
+	if (vars->err == NOT_CLOSED_BY_WALL)
+	{
+		free_map(vars);
+		res = write(2, "Map is not closed by wall.\n", 27);
+	}
 	(void)res;
-	exit(EXIT_FAILURE);
+	return (EXIT_FAILURE);
 }

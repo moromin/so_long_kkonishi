@@ -1,7 +1,10 @@
 NAME	= so_long
-SRCS	= main.c arg_check.c error_handle.c
-
-OBJS	= $(SRCS:%.c=%.o)
+SRCS	= 	main.c \
+			arg_check.c \
+			error_handle.c \
+			utils.c
+OBJDIR  = ./obj
+OBJS    = $(addprefix $(OBJDIR)/, $(SRCS:%.c=%.o))
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 GNLPATH = ./gnl/
@@ -15,7 +18,8 @@ $(NAME): $(OBJS)
 	make -C libft/
 	$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -Lgnl -lgnl -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
 
-%.o: %.c
+$(OBJDIR)/%.o: %.c
+	mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 clean:

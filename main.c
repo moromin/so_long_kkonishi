@@ -32,7 +32,7 @@ int	main(int argc, char *argv[])
 	t_data	img;
 
 	if (args_check(argc, argv, &vars) >= 0)
-		print_args_err(&vars);
+		return (print_args_err(&vars));
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1280, 720, "Hello world!");
 	img.img = mlx_new_image(vars.mlx, 1280, 720);

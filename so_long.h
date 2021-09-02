@@ -13,6 +13,10 @@
 # define FILE_OPEN_ERROR 1
 # define INVALID_MAP_CHAR 2
 # define LACK_ESSENTIAL_CHAR 3
+# define NOT_RECTANGULAR 4
+# define NOT_CLOSED_BY_WALL 5
+
+# define MALLOC_ERROR 10
 
 # define ESC_KEY 65307
 # define W_KEY 119
@@ -33,8 +37,8 @@ typedef struct s_data
 
 typedef struct s_map
 {
-	int		width;
-	int		height;
+	size_t	width;
+	size_t	height;
 	char	**map;
 	int		c_flag;
 	int		e_flag;
@@ -48,12 +52,19 @@ typedef struct s_vars
 	int		err;
 	char	*path;
 	t_map	map;
+	t_data	data;
 }	t_vars;
 
 // arg_check.c
 int		args_check(int argc, char *argv[], t_vars *vars);
 
 // error_handle.c
-void	print_args_err(t_vars *vars);
+int		print_args_err(t_vars *vars);
+
+// rendering.c
+
+// utils.c
+void	init_map(t_vars *vars);
+void	free_map(t_vars *vars);
 
 #endif
