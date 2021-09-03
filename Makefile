@@ -4,6 +4,7 @@ SRCS	= 	main.c \
 			error_handle.c \
 			utils.c \
 			rendering.c
+SRCDIR	= ./srcs
 OBJDIR  = ./obj
 OBJS    = $(addprefix $(OBJDIR)/, $(SRCS:%.c=%.o))
 CC		= gcc

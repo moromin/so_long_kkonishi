@@ -3,8 +3,8 @@
 int	close_window(int keycode, t_vars *vars)
 {
 	(void)keycode;
-	free_map(vars);
-	free_all_ptr(vars);
+	// free_map(vars);
+	// free_all_ptr(vars);
 	mlx_destroy_window(vars->mlx, vars->win);
 	exit(0);
 	return (0);
@@ -16,8 +16,8 @@ int	key_hook(int code, t_vars *vars)
 		moving_player(code, vars);
 	if (code == ESC_KEY)
 	{
-		free_map(vars);
-		free_all_ptr(vars);
+		// free_map(vars);
+		// free_all_ptr(vars);
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);
 	}
