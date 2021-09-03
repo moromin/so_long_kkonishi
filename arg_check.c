@@ -11,11 +11,11 @@ int	line_check(char *line, t_vars *vars, size_t count)
 		if (ft_strchr(VALID_CHAR, line[i]) == NULL)
 			return (INVALID_MAP_CHAR);
 		if (line[i] == 'C')
-			vars->map.c_flag = 1;
+			vars->map.c_flag++;
 		if (line[i] == 'E')
-			vars->map.e_flag = 1;
+			vars->map.e_flag++;
 		if (line[i] == 'P')
-			vars->map.p_flag = 1;
+			vars->map.p_flag++;
 		i++;
 	}
 	if (count > 0 && line_size != ft_strlen(line))

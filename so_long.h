@@ -18,6 +18,8 @@
 
 # define MALLOC_ERROR 10
 
+# define TILESIZE 48
+
 # define ESC_KEY 65307
 # define W_KEY 119
 # define A_KEY 97
@@ -43,6 +45,11 @@ typedef struct s_map
 	int		c_flag;
 	int		e_flag;
 	int		p_flag;
+	char	*space;
+	char	*wall;
+	char	*collectible;
+	char	*exit;
+	char	*player;
 }	t_map;
 
 typedef struct s_vars
@@ -52,7 +59,7 @@ typedef struct s_vars
 	int		err;
 	char	*path;
 	t_map	map;
-	t_data	data;
+	t_data	img;
 }	t_vars;
 
 // arg_check.c
@@ -62,6 +69,7 @@ int		args_check(int argc, char *argv[], t_vars *vars);
 int		print_args_err(t_vars *vars);
 
 // rendering.c
+void	tile_path_set(t_vars *vars);
 
 // utils.c
 void	init_map(t_vars *vars);

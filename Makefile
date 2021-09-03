@@ -2,7 +2,8 @@ NAME	= so_long
 SRCS	= 	main.c \
 			arg_check.c \
 			error_handle.c \
-			utils.c
+			utils.c \
+			rendering.c
 OBJDIR  = ./obj
 OBJS    = $(addprefix $(OBJDIR)/, $(SRCS:%.c=%.o))
 CC		= gcc
