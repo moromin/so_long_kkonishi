@@ -52,14 +52,22 @@ typedef struct s_map
 	char	*player;
 }	t_map;
 
+typedef struct s_player
+{
+	int		i;
+	int		j;
+	int		step;
+}	t_player;
+
 typedef struct s_vars
 {
-	void	*mlx;
-	void	*win;
-	int		err;
-	char	*path;
-	t_map	map;
-	t_data	img;
+	void		*mlx;
+	void		*win;
+	int			err;
+	char		*path;
+	t_map		map;
+	t_data		img;
+	t_player	player;
 }	t_vars;
 
 // arg_check.c
@@ -70,6 +78,8 @@ int		print_args_err(t_vars *vars);
 
 // rendering.c
 void	tile_path_set(t_vars *vars);
+void	rendering_main(t_vars *vars, t_data *img);
+void	moving_player(int code, t_vars *vars);
 
 // utils.c
 void	init_map(t_vars *vars);
