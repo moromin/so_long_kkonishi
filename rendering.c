@@ -55,6 +55,21 @@ void	rendering_main(t_vars *vars, t_data *img)
 	printf("Player step is %d\n", vars->player.step);
 }
 
+void	update_map(t_vars *vars, int x, int y)
+{
+	if (vars->map.map[y][x] == 'C')
+		vars->map.c_flag--;
+	if (vars->map.map[y][x] == 'E' && vars->map.c_flag == 0)
+	{
+		printf("MAP CLEAR!\n");
+		close_window(0, vars);
+	}
+	vars->map.map[y][x] = 'P';
+	vars->map.map[vars->player.i][vars->player.j] = '0';
+	free(vars->img.img);
+	rendering_main(vars, &vars->img);
+}
+
 void	moving_player(int code, t_vars *vars)
 {
 	int	x;
@@ -68,13 +83,12 @@ void	moving_player(int code, t_vars *vars)
 		x--;
 	else if (code == S_KEY)
 		y++;
-	else if (code == A_KEY)
+	else if (code == D_KEY)
 		x++;
 	if (vars->map.map[y][x] == 'E' && vars->map.c_flag != 0)
 		return ;
 	if (vars->map.map[y][x] == '1')
 		return ;
-	vars->player.j = x;
-	vars->player.i = y;
 	vars->player.step++;
+	update_map(vars, x, y);
 }

@@ -70,6 +70,9 @@ typedef struct s_vars
 	t_player	player;
 }	t_vars;
 
+// main.c
+int		close_window(int keycode, t_vars *vars);
+
 // arg_check.c
 int		args_check(int argc, char *argv[], t_vars *vars);
 
@@ -84,5 +87,6 @@ void	moving_player(int code, t_vars *vars);
 // utils.c
 void	init_map(t_vars *vars);
 void	free_map(t_vars *vars);
+void	free_all_ptr(t_vars *vars);
 
 #endif

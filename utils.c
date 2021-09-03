@@ -22,3 +22,10 @@ void	free_map(t_vars *vars)
 	}
 	free(vars->map.map);
 }
+
+void	free_all_ptr(t_vars *vars)
+{
+	free(vars->img.img);
+	free(vars->mlx);
+	free(vars->win);
+}
