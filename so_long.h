@@ -81,12 +81,15 @@ int		print_args_err(t_vars *vars);
 
 // rendering.c
 void	tile_path_set(t_vars *vars);
-void	rendering_main(t_vars *vars, t_data *img);
+void	rendering_main(t_vars *vars, t_data *img, int exp_flag);
 void	moving_player(int code, t_vars *vars);
 
 // utils.c
 void	init_map(t_vars *vars);
 void	free_map(t_vars *vars);
 void	free_all_ptr(t_vars *vars);
+
+// bonus
+
 
 #endif
