@@ -1,35 +1,29 @@
-#include "so_long.h"
+#include "../includes/so_long_bonus.h"
 
-void	tile_path_set(t_vars *vars)
+void	map_screen(t_vars *vars, t_data *img, int i, int j)
 {
-	vars->map.space = "images/space.xpm";
-	vars->map.wall = "images/wall.xpm";
-	vars->map.collectible = "images/collectible.xpm";
-	vars->map.exit = "images/exit.xpm";
-	vars->map.player = "images/player.xpm";
-	vars->player.step = 0;
-}
+	void	*img_ptr;
+	char	tile;
 
-void	map_screen(t_vars *vars, t_data *img, char tile)
-{
-	char	*select;
-
-	select = NULL;
-	if (tile == '0')
-		select = vars->map.space;
-	else if (tile == '1')
-		select = vars->map.wall;
+	tile = vars->map.map[i][j];
+	img_ptr = NULL;
+	if (tile == '1')
+		img_ptr = img->w_img;
+	else if (tile == '0')
+		img_ptr = img->s_img;
 	else if (tile == 'C')
-		select = vars->map.collectible;
+		img_ptr = img->c_img;
 	else if (tile == 'E')
-		select = vars->map.exit;
+		img_ptr = img->e_img;
 	else if (tile == 'P')
-		select = vars->map.player;
-	img->img = mlx_xpm_file_to_image(vars->mlx, select,
-			&img->width, &img->height);
+		img_ptr = img->p_img;
+	else if (tile == 'T')
+		img_ptr = img->t_img;
+	mlx_put_image_to_window(vars->mlx, vars->win, img_ptr,
+		j * TILESIZE, i * TILESIZE);
 }
 
-void	rendering_main(t_vars *vars, t_data *img, int exp_flag)
+void	rendering_main(t_vars *vars, t_data *img)
 {
 	int		i;
 	int		j;
@@ -40,9 +34,7 @@ void	rendering_main(t_vars *vars, t_data *img, int exp_flag)
 		j = 0;
 		while (vars->map.map[i][j] != '\n')
 		{
-			map_screen(vars, img, vars->map.map[i][j]);
-			mlx_put_image_to_window(vars->mlx, vars->win, img->img,
-				j * TILESIZE, i * TILESIZE);
+			map_screen(vars, img, i, j);
 			if (vars->map.map[i][j] == 'P')
 			{
 				vars->player.i = i;
@@ -52,8 +44,7 @@ void	rendering_main(t_vars *vars, t_data *img, int exp_flag)
 		}
 		i++;
 	}
-	if (!exp_flag)
-		printf("Player step is %d\n", vars->player.step);
+	string_put_display(vars);
 }
 
 void	update_map(t_vars *vars, int x, int y)
@@ -67,8 +58,7 @@ void	update_map(t_vars *vars, int x, int y)
 	}
 	vars->map.map[y][x] = 'P';
 	vars->map.map[vars->player.i][vars->player.j] = '0';
-	// free(vars->img.img);
-	rendering_main(vars, &vars->img, 0);
+	rendering_main(vars, &vars->img);
 }
 
 void	moving_player(int code, t_vars *vars)

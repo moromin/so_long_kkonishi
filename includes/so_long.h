@@ -3,11 +3,15 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include <mlx.h>
-# include "gnl/get_next_line.h"
-# include "libft/libft.h"
+# include "../mlx_linux/mlx.h"
+# include "../get_next_line/get_next_line.h"
+# include "../libft/libft.h"
 
 # define VALID_CHAR "01CEP"
+# define VALID_CHAR_BONUS "01CEPT"
+
+# define DISP_STR "PLAYER STEP :"
+# define COLOR 0x00FFDAB9
 
 # define ARGS_NUM_ERROR 0
 # define FILE_OPEN_ERROR 1
@@ -35,6 +39,12 @@ typedef struct s_data
 	int		endian;
 	int		width;
 	int		height;
+	void	*s_img;
+	void	*w_img;
+	void	*c_img;
+	void	*e_img;
+	void	*p_img;
+	void	*t_img;
 }	t_data;
 
 typedef struct s_map
@@ -50,6 +60,7 @@ typedef struct s_map
 	char	*collectible;
 	char	*exit;
 	char	*player;
+	char	*teki;
 }	t_map;
 
 typedef struct s_player
@@ -88,8 +99,10 @@ void	moving_player(int code, t_vars *vars);
 void	init_map(t_vars *vars);
 void	free_map(t_vars *vars);
 void	free_all_ptr(t_vars *vars);
+void	tile_path_set(t_vars *vars);
+void	img_ptr_destroy(t_vars *vars);
 
-// bonus
-
+// display_bonus.c
+void	string_put_display(t_vars *vars);
 
 #endif

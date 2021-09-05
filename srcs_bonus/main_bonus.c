@@ -1,11 +1,13 @@
-#include "so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	close_window(int keycode, t_vars *vars)
 {
 	(void)keycode;
-	// free_map(vars);
-	// free_all_ptr(vars);
+	free_map(vars);
+	img_ptr_destroy(vars);
 	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
 	exit(0);
 	return (0);
 }
@@ -16,9 +18,11 @@ int	key_hook(int code, t_vars *vars)
 		moving_player(code, vars);
 	if (code == ESC_KEY)
 	{
-		// free_map(vars);
-		// free_all_ptr(vars);
+		free_map(vars);
+		img_ptr_destroy(vars);
 		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
 		exit(0);
 	}
 	return (0);
@@ -26,7 +30,13 @@ int	key_hook(int code, t_vars *vars)
 
 int	expose_window(t_vars *vars)
 {
-	rendering_main(vars, &vars->img, 1);
+	rendering_main(vars, &vars->img);
+	return (0);
+}
+
+int	loop_func(t_vars *vars)
+{
+	rendering_main(vars, &vars->img);
 	return (0);
 }
 
@@ -43,12 +53,9 @@ int	main(int argc, char *argv[])
 	width = (vars.map.width - 1) * TILESIZE;
 	height = vars.map.height * TILESIZE;
 	vars.win = mlx_new_window(vars.mlx, width, height, "so_long");
-	rendering_main(&vars, &vars.img, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_expose_hook(vars.win, expose_window, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_window, &vars);
+	mlx_loop_hook(vars.mlx, loop_func, &vars);
 	mlx_loop(vars.mlx);
 }
-
-	// mlx_hook(vars.win, 2, 1L << 0, close, &vars);
-	// mlx_hook(vars.win, 4, 1L << 2, close, &vars);

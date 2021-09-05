@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	print_args_err(t_vars *vars)
 {

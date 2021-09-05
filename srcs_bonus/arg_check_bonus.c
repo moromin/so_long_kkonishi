@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	line_check(char *line, t_vars *vars, size_t count)
 {
@@ -8,7 +8,7 @@ int	line_check(char *line, t_vars *vars, size_t count)
 	i = 0;
 	while (line[i] != '\n' && line[i] != '\0')
 	{
-		if (ft_strchr(VALID_CHAR, line[i]) == NULL)
+		if (ft_strchr(VALID_CHAR_BONUS, line[i]) == NULL)
 			return (INVALID_MAP_CHAR);
 		if (line[i] == 'C')
 			vars->map.c_flag++;
