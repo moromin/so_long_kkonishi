@@ -77,8 +77,8 @@ void	img_ptr_destroy(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->img.e_img);
 	if (vars->img.c_img)
 		mlx_destroy_image(vars->mlx, vars->img.c_img);
-	if (vars->img.p_img)
-		mlx_destroy_image(vars->mlx, vars->img.p_img);
+	// if (vars->img.p_img)
+	// 	mlx_destroy_image(vars->mlx, vars->img.p_img);
 	destroy_player(vars);
 	destroy_enemy(vars);
 }

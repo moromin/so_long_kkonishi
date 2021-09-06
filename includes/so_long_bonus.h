@@ -21,7 +21,6 @@ typedef struct s_data
 	void	*w_img;
 	void	*c_img;
 	void	*e_img;
-	void	*p_img;
 	void	*p_w_1_img;
 	void	*p_w_2_img;
 	void	*p_w_3_img;
@@ -64,8 +63,9 @@ typedef struct s_player
 	int		i;
 	int		j;
 	int		step;
+	int		key;
+	int		frame;
 }	t_player;
-// int	key;
 
 typedef struct s_vars
 {
@@ -108,5 +108,8 @@ int		close_window(t_vars *vars);
 void	img_ptr_destroy(t_vars *vars);
 void	destroy_player(t_vars *vars);
 void	destroy_enemy(t_vars *vars);
+
+// sprite_player_bonus.c
+void	sprite_player(t_vars *vars, t_data *img, int i, int j);
 
 #endif

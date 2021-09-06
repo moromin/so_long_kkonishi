@@ -2,6 +2,7 @@
 
 int	key_hook(int code, t_vars *vars)
 {
+	vars->player.key = code;
 	if (code == A_KEY || code == S_KEY || code == W_KEY || code == D_KEY)
 		moving_player(code, vars);
 	if (code == ESC_KEY)
@@ -17,24 +18,19 @@ int	expose_window(t_vars *vars)
 
 void	run_animation(t_vars *vars)
 {
-	// static int	count;
+	static int	count;
 
-	// count++;
-	// (void)vars;
-	// if (count == 500)
-	// 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.p_s_img,
-	// 		0, 6 * TILESIZE);
-	// else if (count == 1000)
-	// {
-	// 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.t_s_img,
-	// 		0, 6 * TILESIZE);
-	// 	count = 0;
-	// }
-	// else if (count == 1500)
-	// {
-	// 	count = 0;
-	// }
-	(void)vars;
+	count++;
+	if (count <= 250)
+		vars->player.frame = 1;
+	else if (count <= 500)
+		vars->player.frame = 2;
+	else if (count <= 750)
+		vars->player.frame = 3;
+	else if (count <= 1000)
+		vars->player.frame = 2;
+	if (count == 1000)
+		count = 0;
 }
 
 int	loop_func(t_vars *vars)
@@ -57,7 +53,7 @@ int	main(int argc, char *argv[])
 	width = (vars.map.width - 1) * TILESIZE;
 	height = vars.map.height * TILESIZE;
 	vars.win = mlx_new_window(vars.mlx, width, height, "so_long");
-	// vars.win = mlx_new_window(vars.mlx, width, height * 2, "so_long");
+	vars.player.key = S_KEY;
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_expose_hook(vars.win, expose_window, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_window, &vars);
