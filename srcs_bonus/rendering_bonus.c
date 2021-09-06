@@ -21,6 +21,8 @@ void	map_screen(t_vars *vars, t_data *img, int i, int j)
 		img_ptr = img->t_img;
 	mlx_put_image_to_window(vars->mlx, vars->win, img_ptr,
 		j * TILESIZE, i * TILESIZE);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.p_s_img,
+		0, 6 * TILESIZE);
 }
 
 void	rendering_main(t_vars *vars, t_data *img)
@@ -54,7 +56,7 @@ void	update_map(t_vars *vars, int x, int y)
 	if (vars->map.map[y][x] == 'E' && vars->map.c_flag == 0)
 	{
 		printf("MAP CLEAR!\n");
-		close_window(0, vars);
+		close_window(vars);
 	}
 	vars->map.map[y][x] = 'P';
 	vars->map.map[vars->player.i][vars->player.j] = '0';

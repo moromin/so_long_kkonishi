@@ -29,3 +29,14 @@ void	free_all_ptr(t_vars *vars)
 	free(vars->mlx);
 	free(vars->win);
 }
+
+int	close_window(t_vars *vars)
+{
+	free_map(vars);
+	img_ptr_destroy(vars);
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
+	exit(0);
+	return (0);
+}
