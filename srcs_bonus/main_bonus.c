@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:23 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 20:10:08 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/06 23:15:42 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int	key_hook(int code, t_vars *vars)
 {
 	vars->player.key = code;
 	if (code == A_KEY || code == S_KEY || code == W_KEY || code == D_KEY)
+	{
 		moving_player(code, vars);
+		moving_enemy(vars);
+	}
 	if (code == ESC_KEY)
 		close_window(vars);
 	return (0);

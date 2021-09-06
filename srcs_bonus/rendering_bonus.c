@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:25 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 19:24:03 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/06 21:12:07 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	map_screen(t_vars *vars, t_data *img, int i, int j)
 		sprite_exit(vars, img, i, j);
 	else if (tile == 'P')
 		sprite_player(vars, img, i, j);
-	if (tile != 'P' && tile != 'E')
+	else if (tile == 'T')
+		sprite_enemy(vars, img, i, j);
+	if (tile != 'P' && tile != 'E' && tile != 'T')
 		mlx_put_image_to_window(vars->mlx, vars->win, img_ptr,
 			j * TILESIZE, i * TILESIZE);
 }
@@ -50,6 +52,11 @@ void	rendering_main(t_vars *vars, t_data *img)
 			{
 				vars->player.i = i;
 				vars->player.j = j;
+			}
+			if (vars->map.map[i][j] == 'T')
+			{
+				vars->enemy.i = i;
+				vars->enemy.j = j;
 			}
 			j++;
 		}

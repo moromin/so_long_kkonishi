@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:30 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 19:37:55 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/06 23:40:41 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	enemy_sprite_set(t_vars *vars)
 			&vars->img.width, &vars->img.height);
 	vars->img.t_d_3_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_D_3,
 			&vars->img.width, &vars->img.height);
-	vars->img.t_s_1_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_S_1,
+	vars->img.t_s_1_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_W_1,
 			&vars->img.width, &vars->img.height);
-	vars->img.t_s_2_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_S_2,
+	vars->img.t_s_2_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_W_2,
 			&vars->img.width, &vars->img.height);
-	vars->img.t_s_3_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_S_3,
+	vars->img.t_s_3_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_W_3,
 			&vars->img.width, &vars->img.height);
 }
 
@@ -84,6 +84,7 @@ void	tile_path_set(t_vars *vars)
 	vars->player.step = 0;
 	vars->player.frame = 1;
 	vars->player.key = S_KEY;
+	vars->enemy.direction = S_KEY;
 	vars->img.s_img = mlx_xpm_file_to_image(vars->mlx, SPACE,
 			&vars->img.width, &vars->img.height);
 	vars->img.w_img = mlx_xpm_file_to_image(vars->mlx, WALL,

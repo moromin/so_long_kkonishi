@@ -13,7 +13,9 @@ B_SRC	=	main_bonus.c \
 			tile_setting_bonus.c \
 			destroy_ptr_bonus.c \
 			sprite_player_bonus.c \
-			sprite_exit_bonus.c
+			sprite_exit_bonus.c \
+			sprite_enemy_bonus.c \
+			enemy_moving_bonus.c
 SRCDIR	= ./srcs
 B_SRCDIR  = ./srcs_bonus
 SRCS	= $(addprefix $(SRCDIR)/, $(SRC))

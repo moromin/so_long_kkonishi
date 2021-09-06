@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 20:09:57 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/06 23:05:01 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,13 @@ typedef struct s_player
 	int		frame;
 }	t_player;
 
+typedef struct s_enemy
+{
+	int		i;
+	int		j;
+	int		direction;
+}	t_enemy;
+
 typedef struct s_vars
 {
 	void		*mlx;
@@ -90,6 +97,7 @@ typedef struct s_vars
 	t_map		map;
 	t_data		img;
 	t_player	player;
+	t_enemy		enemy;
 }	t_vars;
 
 // main.c
@@ -128,5 +136,11 @@ void	sprite_player(t_vars *vars, t_data *img, int i, int j);
 
 // sprite_exit_bonus.c
 void	sprite_exit(t_vars *vars, t_data *img, int i, int j);
+
+// sprite_enemy_bonus.c
+void	sprite_enemy(t_vars *vars, t_data *img, int i, int j);
+
+// enemy_moving_bonus.c
+void	moving_enemy(t_vars *vars);
 
 #endif

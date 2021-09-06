@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:18 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 20:01:48 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/06 23:50:42 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	string_put_display(t_vars *vars)
 		COLOR, "/");
 	mlx_string_put(vars->mlx, vars->win, 240, vars->map.height * TILESIZE + 15,
 		COLOR, all);
-		// printf("step:%d\n", vars->player.step);
 	free(step);
 	free(all);
 	free(current);
