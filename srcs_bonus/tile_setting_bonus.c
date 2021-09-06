@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tile_setting_bonus.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/06 18:55:30 by kkonishi          #+#    #+#             */
+/*   Updated: 2021/09/06 19:37:55 by kkonishi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long_bonus.h"
 
 void	player_sprite_set(t_vars *vars)
@@ -56,19 +68,29 @@ void	enemy_sprite_set(t_vars *vars)
 			&vars->img.width, &vars->img.height);
 }
 
+void	exit_sprite_set(t_vars *vars)
+{
+	vars->img.e_1_img = mlx_xpm_file_to_image(vars->mlx, EXIT_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.e_2_img = mlx_xpm_file_to_image(vars->mlx, EXIT_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.e_3_img = mlx_xpm_file_to_image(vars->mlx, EXIT_3,
+			&vars->img.width, &vars->img.height);
+}
+
 void	tile_path_set(t_vars *vars)
 {
 	vars->map.collectibles = vars->map.c_flag;
 	vars->player.step = 0;
 	vars->player.frame = 1;
+	vars->player.key = S_KEY;
 	vars->img.s_img = mlx_xpm_file_to_image(vars->mlx, SPACE,
 			&vars->img.width, &vars->img.height);
 	vars->img.w_img = mlx_xpm_file_to_image(vars->mlx, WALL,
 			&vars->img.width, &vars->img.height);
 	vars->img.c_img = mlx_xpm_file_to_image(vars->mlx, COLLECTIBLE,
 			&vars->img.width, &vars->img.height);
-	vars->img.e_img = mlx_xpm_file_to_image(vars->mlx, EXIT,
-			&vars->img.width, &vars->img.height);
+	exit_sprite_set(vars);
 	player_sprite_set(vars);
 	enemy_sprite_set(vars);
 }

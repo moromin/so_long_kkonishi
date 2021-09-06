@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_bonus.c                                      :+:      :+:    :+:   */
+/*   sprite_exit_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 18:55:32 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 18:55:33 by kkonishi         ###   ########.fr       */
+/*   Created: 2021/09/06 18:55:27 by kkonishi          #+#    #+#             */
+/*   Updated: 2021/09/06 19:37:44 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void	init_map(t_vars *vars)
+void	sprite_exit(t_vars *vars, t_data *img, int i, int j)
 {
-	vars->map.c_flag = 0;
-	vars->map.e_flag = 0;
-	vars->map.p_flag = 0;
-	vars->map.width = 0;
-	vars->map.height = 0;
-}
+	void	*img_ptr;
+	int		frame;
 
-void	free_map(t_vars *vars)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < vars->map.height)
-	{
-		free(vars->map.map[i]);
-		vars->map.map[i] = NULL;
-		i++;
-	}
-	free(vars->map.map);
-}
-
-void	free_all_ptr(t_vars *vars)
-{
-	free(vars->img.img);
-	free(vars->mlx);
-	free(vars->win);
+	img_ptr = NULL;
+	frame = vars->player.frame;
+	if (frame == 1)
+		img_ptr = img->e_1_img;
+	if (frame == 2)
+		img_ptr = img->e_2_img;
+	if (frame == 3)
+		img_ptr = img->e_3_img;
+	mlx_put_image_to_window(vars->mlx, vars->win, img_ptr,
+		j * TILESIZE, i * TILESIZE);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rendering_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/06 18:55:25 by kkonishi          #+#    #+#             */
+/*   Updated: 2021/09/06 19:24:03 by kkonishi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long_bonus.h"
 
 void	map_screen(t_vars *vars, t_data *img, int i, int j)
@@ -14,10 +26,10 @@ void	map_screen(t_vars *vars, t_data *img, int i, int j)
 	else if (tile == 'C')
 		img_ptr = img->c_img;
 	else if (tile == 'E')
-		img_ptr = img->e_img;
+		sprite_exit(vars, img, i, j);
 	else if (tile == 'P')
 		sprite_player(vars, img, i, j);
-	if (tile != 'P')
+	if (tile != 'P' && tile != 'E')
 		mlx_put_image_to_window(vars->mlx, vars->win, img_ptr,
 			j * TILESIZE, i * TILESIZE);
 }

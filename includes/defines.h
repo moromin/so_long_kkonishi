@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   defines.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/06 18:54:06 by kkonishi          #+#    #+#             */
+/*   Updated: 2021/09/06 18:56:49 by kkonishi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DEFINES_H
 # define DEFINES_H
 
@@ -13,8 +25,6 @@
 # define WALL "images/wall.xpm"
 # define COLLECTIBLE "images/collectible.xpm"
 # define EXIT "images/exit.xpm"
-# define PLAYER "images/player.xpm"
-# define ENEMY "images/player.xpm"
 
 # define PLAYER_S_1 "images/player_sprite/sprite1.xpm"
 # define PLAYER_S_2 "images/player_sprite/sprite2.xpm"
@@ -41,6 +51,10 @@
 # define ENEMY_S_1 "images/enemy_sprite/sprite10.xpm"
 # define ENEMY_S_2 "images/enemy_sprite/sprite11.xpm"
 # define ENEMY_S_3 "images/enemy_sprite/sprite12.xpm"
+
+# define EXIT_1 "images/exit_sprite/sprite1.xpm"
+# define EXIT_2 "images/exit_sprite/sprite2.xpm"
+# define EXIT_3 "images/exit_sprite/sprite3.xpm"
 
 # define ARGS_NUM_ERROR 0
 # define FILE_OPEN_ERROR 1

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/06 18:54:10 by kkonishi          #+#    #+#             */
+/*   Updated: 2021/09/06 20:09:57 by kkonishi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
@@ -20,7 +32,6 @@ typedef struct s_data
 	void	*s_img;
 	void	*w_img;
 	void	*c_img;
-	void	*e_img;
 	void	*p_w_1_img;
 	void	*p_w_2_img;
 	void	*p_w_3_img;
@@ -45,6 +56,9 @@ typedef struct s_data
 	void	*t_d_1_img;
 	void	*t_d_2_img;
 	void	*t_d_3_img;
+	void	*e_1_img;
+	void	*e_2_img;
+	void	*e_3_img;
 }	t_data;
 
 typedef struct s_map
@@ -111,5 +125,8 @@ void	destroy_enemy(t_vars *vars);
 
 // sprite_player_bonus.c
 void	sprite_player(t_vars *vars, t_data *img, int i, int j);
+
+// sprite_exit_bonus.c
+void	sprite_exit(t_vars *vars, t_data *img, int i, int j);
 
 #endif
