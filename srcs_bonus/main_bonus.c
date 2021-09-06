@@ -56,8 +56,8 @@ int	main(int argc, char *argv[])
 	tile_path_set(&vars);
 	width = (vars.map.width - 1) * TILESIZE;
 	height = vars.map.height * TILESIZE;
-	// vars.win = mlx_new_window(vars.mlx, width, height, "so_long");
-	vars.win = mlx_new_window(vars.mlx, width, height * 2, "so_long");
+	vars.win = mlx_new_window(vars.mlx, width, height, "so_long");
+	// vars.win = mlx_new_window(vars.mlx, width, height * 2, "so_long");
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_expose_hook(vars.win, expose_window, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_window, &vars);

@@ -22,10 +22,30 @@ typedef struct s_data
 	void	*c_img;
 	void	*e_img;
 	void	*p_img;
-	void	*t_img;
-	void	*p_s_img;
-	void	*t_s_img;
-	void	*now_img;
+	void	*p_w_1_img;
+	void	*p_w_2_img;
+	void	*p_w_3_img;
+	void	*p_a_1_img;
+	void	*p_a_2_img;
+	void	*p_a_3_img;
+	void	*p_s_1_img;
+	void	*p_s_2_img;
+	void	*p_s_3_img;
+	void	*p_d_1_img;
+	void	*p_d_2_img;
+	void	*p_d_3_img;
+	void	*t_w_1_img;
+	void	*t_w_2_img;
+	void	*t_w_3_img;
+	void	*t_a_1_img;
+	void	*t_a_2_img;
+	void	*t_a_3_img;
+	void	*t_s_1_img;
+	void	*t_s_2_img;
+	void	*t_s_3_img;
+	void	*t_d_1_img;
+	void	*t_d_2_img;
+	void	*t_d_3_img;
 }	t_data;
 
 typedef struct s_map
@@ -45,6 +65,7 @@ typedef struct s_player
 	int		j;
 	int		step;
 }	t_player;
+// int	key;
 
 typedef struct s_vars
 {
@@ -74,7 +95,6 @@ void	moving_player(int code, t_vars *vars);
 void	init_map(t_vars *vars);
 void	free_map(t_vars *vars);
 void	free_all_ptr(t_vars *vars);
-int		close_window(t_vars *vars);
 
 // display_bonus.c
 void	string_put_display(t_vars *vars);
@@ -82,5 +102,11 @@ void	string_put_display(t_vars *vars);
 // tile_setting.c
 void	tile_path_set(t_vars *vars);
 void	img_ptr_destroy(t_vars *vars);
+
+// destroy_ptr.c
+int		close_window(t_vars *vars);
+void	img_ptr_destroy(t_vars *vars);
+void	destroy_player(t_vars *vars);
+void	destroy_enemy(t_vars *vars);
 
 #endif

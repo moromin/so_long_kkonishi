@@ -10,7 +10,8 @@ B_SRC	=	main_bonus.c \
 			utils_bonus.c \
 			rendering_bonus.c \
 			display_bonus.c \
-			tile_setting_bonus.c
+			tile_setting_bonus.c \
+			destroy_ptr_bonus.c
 SRCDIR	= ./srcs
 B_SRCDIR  = ./srcs_bonus
 SRCS	= $(addprefix $(SRCDIR)/, $(SRC))

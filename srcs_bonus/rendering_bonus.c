@@ -17,12 +17,10 @@ void	map_screen(t_vars *vars, t_data *img, int i, int j)
 		img_ptr = img->e_img;
 	else if (tile == 'P')
 		img_ptr = img->p_img;
-	else if (tile == 'T')
-		img_ptr = img->t_img;
 	mlx_put_image_to_window(vars->mlx, vars->win, img_ptr,
 		j * TILESIZE, i * TILESIZE);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.p_s_img,
-		0, 6 * TILESIZE);
+	// mlx_put_image_to_window(vars->mlx, vars->win, vars->img.p_w_1_img,
+	// 	0, 6 * TILESIZE);
 }
 
 void	rendering_main(t_vars *vars, t_data *img)

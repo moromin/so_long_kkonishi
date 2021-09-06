@@ -1,5 +1,61 @@
 #include "../includes/so_long_bonus.h"
 
+void	player_sprite_set(t_vars *vars)
+{
+	vars->img.p_w_1_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_W_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_w_2_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_W_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_w_3_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_W_3,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_a_1_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_A_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_a_2_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_A_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_a_3_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_A_3,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_d_1_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_D_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_d_2_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_D_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_d_3_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_D_3,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_s_1_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_S_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_s_2_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_S_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_s_3_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_S_3,
+			&vars->img.width, &vars->img.height);
+}
+
+void	enemy_sprite_set(t_vars *vars)
+{
+	vars->img.t_w_1_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_W_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_w_2_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_W_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_w_3_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_W_3,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_a_1_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_A_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_a_2_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_A_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_a_3_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_A_3,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_d_1_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_D_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_d_2_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_D_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_d_3_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_D_3,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_s_1_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_S_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_s_2_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_S_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.t_s_3_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_S_3,
+			&vars->img.width, &vars->img.height);
+}
+
 void	tile_path_set(t_vars *vars)
 {
 	vars->map.collectibles = vars->map.c_flag;
@@ -14,30 +70,6 @@ void	tile_path_set(t_vars *vars)
 			&vars->img.width, &vars->img.height);
 	vars->img.p_img = mlx_xpm_file_to_image(vars->mlx, PLAYER,
 			&vars->img.width, &vars->img.height);
-	vars->img.t_img = mlx_xpm_file_to_image(vars->mlx, ENEMY,
-			&vars->img.width, &vars->img.height);
-	vars->img.p_s_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_SPRITE,
-			&vars->img.width, &vars->img.height);
-	vars->img.t_s_img = mlx_xpm_file_to_image(vars->mlx, ENEMY_SPRITE,
-			&vars->img.width, &vars->img.height);
-}
-
-void	img_ptr_destroy(t_vars *vars)
-{
-	if (vars->img.s_img)
-		mlx_destroy_image(vars->mlx, vars->img.s_img);
-	if (vars->img.w_img)
-		mlx_destroy_image(vars->mlx, vars->img.w_img);
-	if (vars->img.e_img)
-		mlx_destroy_image(vars->mlx, vars->img.e_img);
-	if (vars->img.c_img)
-		mlx_destroy_image(vars->mlx, vars->img.c_img);
-	if (vars->img.p_img)
-		mlx_destroy_image(vars->mlx, vars->img.p_img);
-	if (vars->img.t_img)
-		mlx_destroy_image(vars->mlx, vars->img.t_img);
-	if (vars->img.p_s_img)
-		mlx_destroy_image(vars->mlx, vars->img.p_s_img);
-	if (vars->img.t_s_img)
-		mlx_destroy_image(vars->mlx, vars->img.t_s_img);
+	player_sprite_set(vars);
+	enemy_sprite_set(vars);
 }
