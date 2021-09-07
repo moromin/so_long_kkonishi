@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 13:18:57 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/07 13:48:02 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_map
 	int		c_flag;
 	int		e_flag;
 	int		p_flag;
+	int		t_flag;
 	int		collectibles;
 }	t_map;
 

@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:32 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 18:55:33 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/07 13:48:14 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_map(t_vars *vars)
 	vars->map.c_flag = 0;
 	vars->map.e_flag = 0;
 	vars->map.p_flag = 0;
+	vars->map.t_flag = 0;
 	vars->map.width = 0;
 	vars->map.height = 0;
 }

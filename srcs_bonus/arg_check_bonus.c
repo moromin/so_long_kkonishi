@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 18:55:10 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/07 13:52:56 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	line_check(char *line, t_vars *vars, size_t count)
 			vars->map.e_flag++;
 		if (line[i] == 'P')
 			vars->map.p_flag++;
+		if (line[i] == 'T')
+			vars->map.t_flag++;
 		i++;
 	}
 	if (count > 0 && line_size != ft_strlen(line))
@@ -107,14 +109,14 @@ int	map_check(char *filename, t_vars *vars)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		vars->err = line_check(line, vars, i);
+		vars->err = line_check(line, vars, i++);
 		vars->map.width = ft_strlen(line);
 		free(line);
 		vars->map.height++;
-		i++;
 	}
-	if (!vars->map.c_flag || !vars->map.e_flag || !vars->map.p_flag)
-		vars->err = LACK_ESSENTIAL_CHAR;
+	if (!vars->map.c_flag || !vars->map.e_flag
+		|| !vars->map.p_flag || !vars->map.t_flag)
+		vars->err = LACK_ESSENTIAL_CHAR_BONUS;
 	close(fd);
 	vars->err = closed_check(filename, vars->map.height, vars->map.width, vars);
 	return (vars->err);

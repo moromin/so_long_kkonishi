@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:20 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 18:55:20 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/07 13:51:58 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	print_args_err(t_vars *vars)
 		res = write(2, "File open error.\n", 17);
 	if (vars->err == INVALID_MAP_CHAR)
 		res = write(2, "Map includes invalid character.\n", 32);
-	if (vars->err == LACK_ESSENTIAL_CHAR)
-		res = write(2, "Lack essential character (C, E or P).\n", 38);
+	if (vars->err == LACK_ESSENTIAL_CHAR_BONUS)
+		res = write(2, "Lack essential character (C, E, P or T).\n", 41);
 	if (vars->err == NOT_RECTANGULAR)
 		res = write(2, "Map is not rectangular.\n", 24);
 	if (vars->err == NOT_CLOSED_BY_WALL)

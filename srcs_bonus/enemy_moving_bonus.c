@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 21:12:21 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 23:26:35 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/07 13:42:39 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	enemy_direction(t_vars *vars, int x, int y)
 		vars->enemy.direction = D_KEY;
 	if (x < vars->enemy.j)
 		vars->enemy.direction = A_KEY;
-	if (y > vars->enemy.i)
+	if (y < vars->enemy.i)
 		vars->enemy.direction = W_KEY;
 	if (y > vars->enemy.i)
 		vars->enemy.direction = S_KEY;

@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:06 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 21:04:38 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/07 13:50:39 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@
 # define PLAYER_W_2 "images/player_sprite/sprite11.xpm"
 # define PLAYER_W_3 "images/player_sprite/sprite12.xpm"
 
-# define ENEMY_W_1 "images/enemy_sprite/sprite1.xpm"
-# define ENEMY_W_2 "images/enemy_sprite/sprite2.xpm"
-# define ENEMY_W_3 "images/enemy_sprite/sprite3.xpm"
+# define ENEMY_S_1 "images/enemy_sprite/sprite1.xpm"
+# define ENEMY_S_2 "images/enemy_sprite/sprite2.xpm"
+# define ENEMY_S_3 "images/enemy_sprite/sprite3.xpm"
 # define ENEMY_A_1 "images/enemy_sprite/sprite4.xpm"
 # define ENEMY_A_2 "images/enemy_sprite/sprite5.xpm"
 # define ENEMY_A_3 "images/enemy_sprite/sprite6.xpm"
 # define ENEMY_D_1 "images/enemy_sprite/sprite7.xpm"
 # define ENEMY_D_2 "images/enemy_sprite/sprite8.xpm"
 # define ENEMY_D_3 "images/enemy_sprite/sprite9.xpm"
-# define ENEMY_S_1 "images/enemy_sprite/sprite10.xpm"
-# define ENEMY_S_2 "images/enemy_sprite/sprite11.xpm"
-# define ENEMY_S_3 "images/enemy_sprite/sprite12.xpm"
+# define ENEMY_W_1 "images/enemy_sprite/sprite10.xpm"
+# define ENEMY_W_2 "images/enemy_sprite/sprite11.xpm"
+# define ENEMY_W_3 "images/enemy_sprite/sprite12.xpm"
 
 # define EXIT_1 "images/exit_sprite/sprite1.xpm"
 # define EXIT_2 "images/exit_sprite/sprite2.xpm"
@@ -62,6 +62,7 @@
 # define LACK_ESSENTIAL_CHAR 3
 # define NOT_RECTANGULAR 4
 # define NOT_CLOSED_BY_WALL 5
+# define LACK_ESSENTIAL_CHAR_BONUS 6
 
 # define MALLOC_ERROR 10
 
