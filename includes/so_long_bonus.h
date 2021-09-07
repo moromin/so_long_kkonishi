@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 13:48:02 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/07 23:57:39 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	moving_player(int code, t_vars *vars);
 void	init_map(t_vars *vars);
 void	free_map(t_vars *vars);
 void	free_all_ptr(t_vars *vars);
+int		extension_check(char *filename);
 
 // display_bonus.c
 void	string_put_display(t_vars *vars);

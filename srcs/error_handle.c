@@ -6,32 +6,46 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:38 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 18:54:41 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/08 00:08:53 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+int	extension_check(char *filename)
+{
+	char	*extension;
+
+	extension = ft_strchr(filename, '.');
+	if (extension == NULL)
+		return (-1);
+	else
+	{
+		if (ft_strncmp(extension, ".ber", 4))
+			return (-1);
+	}
+	return (0);
+}
+
 int	print_args_err(t_vars *vars)
 {
-	ssize_t	res;
-
-	res = write(2, "Error\n", 6);
+	ft_putstr_fd("Error\n", 2);
 	if (vars->err == ARGS_NUM_ERROR)
-		res = write(2, "Invalid number of arguments.\n", 29);
+		ft_putstr_fd("Invalid number of arguments.\n", 2);
 	if (vars->err == FILE_OPEN_ERROR)
-		res = write(2, "File open error.\n", 17);
+		ft_putstr_fd("File open error.\n", 2);
 	if (vars->err == INVALID_MAP_CHAR)
-		res = write(2, "Map includes invalid character.\n", 32);
+		ft_putstr_fd("Map includes invalid character.\n", 2);
 	if (vars->err == LACK_ESSENTIAL_CHAR)
-		res = write(2, "Lack essential character (C, E or P).\n", 38);
+		ft_putstr_fd("Lack essential character (C, E, or P).\n", 2);
 	if (vars->err == NOT_RECTANGULAR)
-		res = write(2, "Map is not rectangular.\n", 24);
+		ft_putstr_fd("Map is not rectangular.\n", 2);
+	if (vars->err == INVALID_EXTENSION)
+		ft_putstr_fd("Invalid extension file.\n", 2);
 	if (vars->err == NOT_CLOSED_BY_WALL)
 	{
 		free_map(vars);
-		res = write(2, "Map is not closed by wall.\n", 27);
+		ft_putstr_fd("Map is not closed by wall.\n", 2);
 	}
-	(void)res;
 	return (EXIT_FAILURE);
 }

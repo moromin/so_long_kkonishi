@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:32 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 13:48:14 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/08 00:00:42 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,19 @@ void	free_all_ptr(t_vars *vars)
 	free(vars->img.img);
 	free(vars->mlx);
 	free(vars->win);
+}
+
+int	extension_check(char *filename)
+{
+	char	*extension;
+
+	extension = ft_strchr(filename, '.');
+	if (extension == NULL)
+		return (-1);
+	else
+	{
+		if (ft_strncmp(extension, ".ber", 4))
+			return (-1);
+	}
+	return (0);
 }

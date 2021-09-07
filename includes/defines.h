@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:06 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 13:50:39 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/07 23:55:53 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@
 # define NOT_RECTANGULAR 4
 # define NOT_CLOSED_BY_WALL 5
 # define LACK_ESSENTIAL_CHAR_BONUS 6
+# define INVALID_EXTENSION 7
 
 # define MALLOC_ERROR 10
 

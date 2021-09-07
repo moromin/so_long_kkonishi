@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:35 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 18:54:35 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/08 00:07:01 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,11 @@ int	args_check(int argc, char *argv[], t_vars *vars)
 	if (argc != 2)
 	{
 		vars->err = ARGS_NUM_ERROR;
+		return (vars->err);
+	}
+	if (extension_check(argv[1]) < 0)
+	{
+		vars->err = INVALID_EXTENSION;
 		return (vars->err);
 	}
 	vars->err = map_check(argv[1], vars);

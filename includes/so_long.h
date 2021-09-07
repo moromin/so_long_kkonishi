@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:13 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 18:54:16 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/08 00:07:41 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,7 @@
 # include "../mlx_linux/mlx.h"
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
-
-# define VALID_CHAR "01CEP"
-# define VALID_CHAR_BONUS "01CEPT"
-
-# define DISP_STR "PLAYER STEP :"
-# define COLOR 0x00FFDAB9
-
-# define ARGS_NUM_ERROR 0
-# define FILE_OPEN_ERROR 1
-# define INVALID_MAP_CHAR 2
-# define LACK_ESSENTIAL_CHAR 3
-# define NOT_RECTANGULAR 4
-# define NOT_CLOSED_BY_WALL 5
-
-# define MALLOC_ERROR 10
-
-# define TILESIZE 48
-
-# define ESC_KEY 65307
-# define W_KEY 119
-# define A_KEY 97
-# define S_KEY 115
-# define D_KEY 100
+# include "defines.h"
 
 typedef struct s_data
 {
@@ -100,6 +78,7 @@ int		close_window(int keycode, t_vars *vars);
 int		args_check(int argc, char *argv[], t_vars *vars);
 
 // error_handle.c
+int		extension_check(char *filename);
 int		print_args_err(t_vars *vars);
 
 // rendering.c
