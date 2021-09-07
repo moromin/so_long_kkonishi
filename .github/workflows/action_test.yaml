@@ -1,0 +1,21 @@
+name: github-actions-test
+
+on: [push]
+
+jobs:
+  norm-check:
+    runs-on: macos-11
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+      - name: install norminette
+        run: |
+          python3 -m pip install --upgrade pip setuptools
+          python3 -m pip install norminette
+      - name: test norminette
+        run: |
+          norminette srcs
+          norminette srcs_bonus
+          norminette includes
+          norminette get_next_line
+          norminette libft
