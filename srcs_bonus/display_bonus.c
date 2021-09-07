@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:18 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 23:50:42 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/07 13:17:14 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,5 @@ void	string_put_display(t_vars *vars)
 	free(all);
 	free(current);
 }
+	// printf("step:%d   collectibles:%d/%d\n", vars->player.step,
+	// 	vars->map.collectibles,	vars->map.collectibles - vars->map.c_flag);
