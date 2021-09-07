@@ -18,6 +18,7 @@ B_SRC	=	main_bonus.c \
 			enemy_moving_bonus.c
 SRCDIR	= ./srcs
 B_SRCDIR  = ./srcs_bonus
+INCDIR 	= includes
 SRCS	= $(addprefix $(SRCDIR)/, $(SRC))
 B_SRCS	= $(addprefix $(B_SRCDIR)/, $(B_SRC))
 OBJS    = $(SRCS:%.c=%.o)
@@ -37,7 +38,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -Lget_next_line -lgnl -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCDIR) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 bonus: $(B_OBJS)
 	make -C $(LIBFTPATH)
@@ -56,4 +57,11 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus $(NAME)
+norm:
+	norminette $(SRCDIR)
+	norminette $(B_SRCDIR)
+	norminette $(INCDIR)
+	norminette $(LIBFTPATH)
+	norminette $(GNLPATH)
+
+.PHONY: all clean fclean re bonus $(NAME) norm
