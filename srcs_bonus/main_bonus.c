@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:23 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/13 23:25:03 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:29:50 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	map_clear(t_vars *vars)
 
 int	loop_func(t_vars *vars)
 {
-	if (vars->player.clear == 1)
+	if (vars->player.clear == 1 || vars->player.clear == -1)
 		map_clear(vars);
 	run_animation(vars);
 	rendering_main(vars, &vars->img);

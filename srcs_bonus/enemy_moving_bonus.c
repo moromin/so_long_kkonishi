@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 21:12:21 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 13:42:39 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:36:52 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,7 @@ void	enemy_direction(t_vars *vars, int x, int y)
 void	update_enemy_map(t_vars *vars, int x, int y)
 {
 	if (vars->map.map[y][x] == 'P')
-	{
-		printf("PLAYER LOSE...\n");
-		close_window(vars);
-	}
+		vars->player.clear = -1;
 	vars->map.map[y][x] = 'T';
 	vars->map.map[vars->enemy.i][vars->enemy.j] = '0';
 	rendering_main(vars, &vars->img);

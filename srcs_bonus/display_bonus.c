@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:18 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/13 23:19:46 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:35:31 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,18 @@ void	map_clear_string_put(t_vars *vars)
 		while (y <= 20)
 		{
 			x = 5;
-			while (x <= 100)
+			while (x <= 300)
 				mlx_pixel_put(vars->mlx, vars->win, x++,
 					y + vars->map.height * TILESIZE, 0x00000000);
 			y++;
 		}
 	}
-	mlx_string_put(vars->mlx, vars->win, 5,
-		vars->map.height * TILESIZE + 15, COLOR, "MAP CLEAR!!");
+	if (vars->player.clear == 1)
+		mlx_string_put(vars->mlx, vars->win, 5,
+			vars->map.height * TILESIZE + 15, COLOR, "MAP CLEAR!!");
+	else
+		mlx_string_put(vars->mlx, vars->win, 5,
+			vars->map.height * TILESIZE + 15, COLOR, "YOU LOSE...");
 }
 
 void	string_put_display(t_vars *vars)
@@ -59,7 +63,7 @@ void	string_put_display(t_vars *vars)
 	char	*all;
 	char	*current;
 
-	if (vars->player.clear == 1)
+	if (vars->player.clear == 1 || vars->player.clear == -1)
 		return (map_clear_string_put(vars));
 	step = ft_itoa(vars->player.step);
 	all = ft_itoa(vars->map.collectibles);
