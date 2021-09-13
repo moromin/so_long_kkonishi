@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:30 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 13:41:35 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:27:23 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	tile_path_set(t_vars *vars)
 	vars->player.step = 0;
 	vars->player.frame = 1;
 	vars->player.key = S_KEY;
+	vars->player.clear = 0;
+	vars->player.count = 0;
 	vars->enemy.direction = S_KEY;
 	vars->img.s_img = mlx_xpm_file_to_image(vars->mlx, SPACE,
 			&vars->img.width, &vars->img.height);

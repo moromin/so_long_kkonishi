@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:20 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/08 00:04:30 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:25:48 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int	print_args_err(t_vars *vars)
 	{
 		free_map(vars);
 		ft_putstr_fd("Map is not closed by wall.\n", 2);
+	}
+	if (vars->err == MAP_IS_TOO_SMALL)
+	{
+		ft_putstr_fd("Map is too small.\n", 2);
+		close_window(vars);
 	}
 	return (EXIT_FAILURE);
 }

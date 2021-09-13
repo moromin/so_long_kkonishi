@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:25 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 21:12:07 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:04:56 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ void	update_map(t_vars *vars, int x, int y)
 	if (vars->map.map[y][x] == 'C')
 		vars->map.c_flag--;
 	if (vars->map.map[y][x] == 'E' && vars->map.c_flag == 0)
-	{
-		printf("MAP CLEAR!\n");
-		close_window(vars);
-	}
-	vars->map.map[y][x] = 'P';
+		vars->player.clear = 1;
+	if (vars->player.clear == 0)
+		vars->map.map[y][x] = 'P';
+	if (vars->player.clear == 1)
+		vars->map.map[y][x] = 'E';
 	vars->map.map[vars->player.i][vars->player.j] = '0';
 	rendering_main(vars, &vars->img);
 }

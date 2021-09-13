@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:23 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 13:21:48 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:25:03 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,20 @@ void	run_animation(t_vars *vars)
 		count = 0;
 }
 
+void	map_clear(t_vars *vars)
+{
+	static int	count;
+
+	count++;
+	vars->player.count = count;
+	if (count == 1200)
+		close_window(vars);
+}
+
 int	loop_func(t_vars *vars)
 {
+	if (vars->player.clear == 1)
+		map_clear(vars);
 	run_animation(vars);
 	rendering_main(vars, &vars->img);
 	return (0);
@@ -62,6 +74,11 @@ int	main(int argc, char *argv[])
 	width = (vars.map.width - 1) * TILESIZE;
 	height = vars.map.height * TILESIZE;
 	vars.win = mlx_new_window(vars.mlx, width, height + 20, "so_long");
+	if (width < 288)
+	{
+		vars.err = MAP_IS_TOO_SMALL;
+		print_args_err(&vars);
+	}
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 17, 1L << 17, close_window, &vars);
 	mlx_loop_hook(vars.mlx, loop_func, &vars);

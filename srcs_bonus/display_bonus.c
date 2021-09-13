@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:18 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 13:17:14 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:19:46 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,35 @@ void	string_bar_put(t_vars *vars)
 	}
 }
 
+void	map_clear_string_put(t_vars *vars)
+{
+	int	x;
+	int	y;
+
+	y = 1;
+	if (vars->player.count == 1)
+	{
+		while (y <= 20)
+		{
+			x = 5;
+			while (x <= 100)
+				mlx_pixel_put(vars->mlx, vars->win, x++,
+					y + vars->map.height * TILESIZE, 0x00000000);
+			y++;
+		}
+	}
+	mlx_string_put(vars->mlx, vars->win, 5,
+		vars->map.height * TILESIZE + 15, COLOR, "MAP CLEAR!!");
+}
+
 void	string_put_display(t_vars *vars)
 {
 	char	*step;
 	char	*all;
 	char	*current;
 
+	if (vars->player.clear == 1)
+		return (map_clear_string_put(vars));
 	step = ft_itoa(vars->player.step);
 	all = ft_itoa(vars->map.collectibles);
 	current = ft_itoa(vars->map.collectibles - vars->map.c_flag);

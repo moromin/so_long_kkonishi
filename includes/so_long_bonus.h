@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 23:57:39 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:08:41 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ typedef struct s_player
 	int		step;
 	int		key;
 	int		frame;
+	int		clear;
+	int		count;
 }	t_player;
 
 typedef struct s_enemy

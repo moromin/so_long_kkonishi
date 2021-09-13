@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:06 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 23:55:53 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:24:15 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@
 # define NOT_CLOSED_BY_WALL 5
 # define LACK_ESSENTIAL_CHAR_BONUS 6
 # define INVALID_EXTENSION 7
+# define MAP_IS_TOO_SMALL 8
 
 # define MALLOC_ERROR 10
 
