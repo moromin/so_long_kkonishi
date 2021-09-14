@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:13 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 19:11:45 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 00:14:10 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void	img_ptr_destroy(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->img.w_img);
 	if (vars->img.c_img)
 		mlx_destroy_image(vars->mlx, vars->img.c_img);
+	if (vars->img.back)
+		mlx_destroy_image(vars->mlx, vars->img.back);
 	destroy_exit(vars);
 	destroy_player(vars);
 	destroy_enemy(vars);

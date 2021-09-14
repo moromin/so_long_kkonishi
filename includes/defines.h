@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:06 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/13 23:24:15 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 00:10:47 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define WALL "images/wall.xpm"
 # define COLLECTIBLE "images/collectible.xpm"
 # define EXIT "images/exit.xpm"
+# define BACK "images/back.xpm"
 
 # define PLAYER_S_1 "images/player_sprite/sprite1.xpm"
 # define PLAYER_S_2 "images/player_sprite/sprite2.xpm"

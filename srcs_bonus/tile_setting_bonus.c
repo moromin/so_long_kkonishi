@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:30 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/13 23:27:23 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 00:13:27 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	tile_path_set(t_vars *vars)
 	vars->img.w_img = mlx_xpm_file_to_image(vars->mlx, WALL,
 			&vars->img.width, &vars->img.height);
 	vars->img.c_img = mlx_xpm_file_to_image(vars->mlx, COLLECTIBLE,
+			&vars->img.width, &vars->img.height);
+	vars->img.back = mlx_xpm_file_to_image(vars->mlx, BACK,
 			&vars->img.width, &vars->img.height);
 	exit_sprite_set(vars);
 	player_sprite_set(vars);

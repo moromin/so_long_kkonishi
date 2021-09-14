@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/13 23:08:41 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 00:08:53 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_data
 	void	*e_1_img;
 	void	*e_2_img;
 	void	*e_3_img;
+	void	*back;
 }	t_data;
 
 typedef struct s_map
