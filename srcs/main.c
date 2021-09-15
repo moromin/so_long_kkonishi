@@ -6,15 +6,14 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:44 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/15 23:22:22 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 23:31:09 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	close_window(int keycode, t_vars *vars)
+int	close_window(t_vars *vars)
 {
-	(void)keycode;
 	free_map(vars);
 	img_ptr_destroy(vars);
 	mlx_destroy_window(vars->mlx, vars->win);
@@ -29,14 +28,7 @@ int	key_hook(int code, t_vars *vars)
 	if (code == A_KEY || code == S_KEY || code == W_KEY || code == D_KEY)
 		moving_player(code, vars);
 	if (code == ESC_KEY)
-	{
-		free_map(vars);
-		img_ptr_destroy(vars);
-		mlx_destroy_window(vars->mlx, vars->win);
-		mlx_destroy_display(vars->mlx);
-		free(vars->mlx);
-		exit(0);
-	}
+		close_window(vars);
 	return (0);
 }
 

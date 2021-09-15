@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:13 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/15 23:21:40 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 23:31:56 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_vars
 }	t_vars;
 
 // main.c
-int		close_window(int keycode, t_vars *vars);
+int		close_window(t_vars *vars);
 
 // arg_check.c
 int		args_check(int argc, char *argv[], t_vars *vars);

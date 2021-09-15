@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:47 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/15 23:24:13 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 23:32:03 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	update_map(t_vars *vars, int x, int y)
 	{
 		printf("Player step is %d\n", vars->player.step);
 		printf("MAP CLEAR!\n");
-		close_window(0, vars);
+		close_window(vars);
 	}
 	vars->map.map[y][x] = 'P';
 	vars->map.map[vars->player.i][vars->player.j] = '0';
