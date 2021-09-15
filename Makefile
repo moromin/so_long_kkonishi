@@ -29,6 +29,7 @@ LIBFTPATH	= ./libft/
 LIBFTFLAG	= -Llibft -lft
 GNLPATH = ./get_next_line/
 GNLFLAG = -Lget_next_line -lgnl
+MLXFLAG = -Lmlx_linux -lmlx  -lXext -lX11 -lm -lbsd
 
 
 all: $(NAME)
@@ -36,15 +37,16 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	make -C $(LIBFTPATH)
 	make -C $(GNLPATH)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFTFLAG) $(GNLFLAG) -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTFLAG) $(GNLFLAG) $(MLXFLAG) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(INCDIR) -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 bonus: $(B_OBJS)
 	make -C $(LIBFTPATH)
 	make -C $(GNLPATH)
-	$(CC) $(CFLAGS) $(B_OBJS) $(LIBFTFLAG) $(GNLFLAG) -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
+	$(CC) $(CFLAGS) $(B_OBJS) $(LIBFTFLAG) $(GNLFLAG) $(MLXFLAG) -o $(NAME)
+# -L/usr/lib -Imlx_linux
 
 clean:
 	make clean -C $(LIBFTPATH)
