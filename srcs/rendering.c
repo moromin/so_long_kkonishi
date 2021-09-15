@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:47 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 18:54:47 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 23:24:13 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	map_screen(t_vars *vars, t_data *img, int i, int j)
 		j * TILESIZE, i * TILESIZE);
 }
 
-void	rendering_main(t_vars *vars, t_data *img, int exp_flag)
+void	rendering_main(t_vars *vars, t_data *img, int count)
 {
 	int		i;
 	int		j;
@@ -54,7 +54,7 @@ void	rendering_main(t_vars *vars, t_data *img, int exp_flag)
 		}
 		i++;
 	}
-	if (!exp_flag)
+	if (count == 1)
 		printf("Player step is %d\n", vars->player.step);
 }
 
@@ -64,12 +64,13 @@ void	update_map(t_vars *vars, int x, int y)
 		vars->map.c_flag--;
 	if (vars->map.map[y][x] == 'E' && vars->map.c_flag == 0)
 	{
+		printf("Player step is %d\n", vars->player.step);
 		printf("MAP CLEAR!\n");
 		close_window(0, vars);
 	}
 	vars->map.map[y][x] = 'P';
 	vars->map.map[vars->player.i][vars->player.j] = '0';
-	rendering_main(vars, &vars->img, 0);
+	rendering_main(vars, &vars->img, 1);
 }
 
 void	moving_player(int code, t_vars *vars)

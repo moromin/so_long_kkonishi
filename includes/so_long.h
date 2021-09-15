@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:13 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/08 00:07:41 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 23:21:40 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_data
 	void	*c_img;
 	void	*e_img;
 	void	*p_img;
-	void	*t_img;
 }	t_data;
 
 typedef struct s_map
@@ -50,7 +49,6 @@ typedef struct s_map
 	char	*collectible;
 	char	*exit;
 	char	*player;
-	char	*teki;
 }	t_map;
 
 typedef struct s_player
@@ -83,7 +81,7 @@ int		print_args_err(t_vars *vars);
 
 // rendering.c
 void	tile_path_set(t_vars *vars);
-void	rendering_main(t_vars *vars, t_data *img, int exp_flag);
+void	rendering_main(t_vars *vars, t_data *img, int count);
 void	moving_player(int code, t_vars *vars);
 
 // utils.c

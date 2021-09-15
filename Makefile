@@ -26,24 +26,25 @@ B_OBJS  = $(B_SRCS:%.c=%.o)
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 LIBFTPATH	= ./libft/
+LIBFTFLAG	= -Llibft -lft
 GNLPATH = ./get_next_line/
-GNL_SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
-GNL_OBJS = $(GNL_SRCS:%.c=%.o)
+GNLFLAG = -Lget_next_line -lgnl
+
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFTPATH)
 	make -C $(GNLPATH)
-	$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -Lget_next_line -lgnl -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTFLAG) $(GNLFLAG) -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(INCDIR) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCDIR) -O3 -c $< -o $@
 
 bonus: $(B_OBJS)
 	make -C $(LIBFTPATH)
 	make -C $(GNLPATH)
-	$(CC) $(CFLAGS) $(B_OBJS) -Llibft -lft -Lget_next_line -lgnl -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
+	$(CC) $(CFLAGS) $(B_OBJS) $(LIBFTFLAG) $(GNLFLAG) -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lbsd -o $(NAME)
 
 clean:
 	make clean -C $(LIBFTPATH)

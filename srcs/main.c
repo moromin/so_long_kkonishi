@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:44 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 18:54:44 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/15 23:22:22 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ int	key_hook(int code, t_vars *vars)
 	return (0);
 }
 
-int	expose_window(t_vars *vars)
+int	loop_func(t_vars *vars)
 {
-	rendering_main(vars, &vars->img, 1);
+	static int	count;
+
+	count++;
+	rendering_main(vars, &vars->img, count);
 	return (0);
 }
 
@@ -59,9 +62,8 @@ int	main(int argc, char *argv[])
 	width = (vars.map.width - 1) * TILESIZE;
 	height = vars.map.height * TILESIZE;
 	vars.win = mlx_new_window(vars.mlx, width, height, "so_long");
-	rendering_main(&vars, &vars.img, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_expose_hook(vars.win, expose_window, &vars);
 	mlx_hook(vars.win, 33, 1L << 17, close_window, &vars);
+	mlx_loop_hook(vars.mlx, loop_func, &vars);
 	mlx_loop(vars.mlx);
 }
