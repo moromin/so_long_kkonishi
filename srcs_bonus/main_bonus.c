@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:23 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/13 23:29:50 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/16 18:25:14 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(int argc, char *argv[])
 		print_args_err(&vars);
 	}
 	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_hook(vars.win, 17, 1L << 17, close_window, &vars);
+	mlx_hook(vars.win, 33, 1L << 17, close_window, &vars);
 	mlx_loop_hook(vars.mlx, loop_func, &vars);
 	mlx_loop(vars.mlx);
 }
