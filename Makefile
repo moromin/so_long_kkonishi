@@ -49,7 +49,6 @@ bonus: $(B_OBJS)
 	make -C $(LIBFTPATH)
 	make -C $(GNLPATH)
 	$(CC) $(CFLAGS) $(B_OBJS) $(LIBFTFLAG) $(GNLFLAG) $(MLXFLAG) -o $(NAME)
-# -L/usr/lib -Imlx_linux
 
 clean:
 	make clean -C $(LIBFTPATH)
@@ -72,4 +71,4 @@ norm:
 	norminette $(LIBFTPATH)
 	norminette $(GNLPATH)
 
-.PHONY: all clean fclean re bonus $(NAME) norm
+.PHONY: all clean fclean re bonus norm
