@@ -31,7 +31,7 @@ GNLPATH = ./get_next_line/
 GNLFLAG = -Lget_next_line -lgnl
 MLXPATH = ./mlx_linux/
 MLXFLAG = -Lmlx_linux -lmlx  -lXext -lX11 -lm -lbsd -Imlx_linux
-GITMLX	= git clone --recursive  https://github.com/42Paris/minilibx-linux.git mlx_linux
+GITMLX	= git clone https://github.com/42Paris/minilibx-linux.git mlx_linux
 
 all: $(NAME)
 
