@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:25 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/15 00:20:30 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/17 12:46:35 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,10 @@ void	moving_player(int code, t_vars *vars)
 		y++;
 	else if (code == D_KEY)
 		x++;
+	if (x < 0 || x > (int)vars->map.width - 2)
+		return ;
+	if (y < 0 || y > (int)vars->map.height - 1)
+		return ;
 	if (vars->map.map[y][x] == 'E' && vars->map.c_flag != 0)
 		return ;
 	if (vars->map.map[y][x] == '1')

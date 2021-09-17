@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:44 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/15 23:31:09 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/17 13:19:32 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ int	main(int argc, char *argv[])
 
 	if (args_check(argc, argv, &vars) >= 0)
 		return (print_args_err(&vars));
-	vars.mlx = mlx_init();
-	tile_path_set(&vars);
 	width = (vars.map.width - 1) * TILESIZE;
 	height = vars.map.height * TILESIZE;
+	vars.mlx = mlx_init();
+	screen_size_check(&vars, width, height);
+	tile_path_set(&vars);
 	vars.win = mlx_new_window(vars.mlx, width, height, "so_long");
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 33, 1L << 17, close_window, &vars);

@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 21:12:21 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/13 23:36:52 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/17 13:29:11 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,10 @@ void	moving_enemy(t_vars *vars)
 	if (enemy_tracing_1(vars, &x, &y) < 0)
 		enemy_tracing_2(vars, &x, &y);
 	enemy_direction(vars, x, y);
+	if (x < 0 || x > (int)vars->map.width - 2)
+		return ;
+	if (y < 0 || y > (int)vars->map.height - 1)
+		return ;
 	tile = vars->map.map[y][x];
 	if (tile == '1' || tile == 'E' || tile == 'C')
 		return ;

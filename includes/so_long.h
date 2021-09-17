@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:13 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/15 23:31:56 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/17 13:18:27 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		args_check(int argc, char *argv[], t_vars *vars);
 
 // error_handle.c
 int		extension_check(char *filename);
+void	screen_size_check(t_vars *vars, int width, int height);
 int		print_args_err(t_vars *vars);
 
 // rendering.c

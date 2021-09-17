@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/15 00:08:53 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/17 13:17:00 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void	init_map(t_vars *vars);
 void	free_map(t_vars *vars);
 void	free_all_ptr(t_vars *vars);
 int		extension_check(char *filename);
+void	screen_size_check(t_vars *vars, int width, int height);
 
 // display_bonus.c
 void	string_put_display(t_vars *vars);

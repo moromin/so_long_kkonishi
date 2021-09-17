@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:23 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/16 18:25:14 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/17 13:37:42 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ int	key_hook(int code, t_vars *vars)
 	vars->player.key = code;
 	if (code == A_KEY || code == S_KEY || code == W_KEY || code == D_KEY)
 	{
-		moving_player(code, vars);
-		moving_enemy(vars);
+		if (vars->player.clear == 0)
+		{
+			moving_player(code, vars);
+			moving_enemy(vars);
+		}
 	}
 	if (code == ESC_KEY)
 		close_window(vars);
@@ -69,10 +72,11 @@ int	main(int argc, char *argv[])
 
 	if (args_check(argc, argv, &vars) >= 0)
 		return (print_args_err(&vars));
-	vars.mlx = mlx_init();
-	tile_path_set(&vars);
 	width = (vars.map.width - 1) * TILESIZE;
 	height = vars.map.height * TILESIZE;
+	vars.mlx = mlx_init();
+	screen_size_check(&vars, width, height);
+	tile_path_set(&vars);
 	vars.win = mlx_new_window(vars.mlx, width, height + 20, "so_long");
 	if (width < 288)
 	{

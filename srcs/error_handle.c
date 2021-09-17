@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:38 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/08 00:08:53 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/17 13:27:42 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,23 @@ int	extension_check(char *filename)
 			return (-1);
 	}
 	return (0);
+}
+
+void	screen_size_check(t_vars *vars, int width, int height)
+{
+	int	width_win;
+	int	height_win;
+
+	mlx_get_screen_size(vars->mlx, &width_win, &height_win);
+	if (height > height_win || width > width_win)
+	{
+		free_map(vars);
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
+		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("Map size is too big to display.", 2);
+		exit(EXIT_FAILURE);
+	}
 }
 
 int	print_args_err(t_vars *vars)
