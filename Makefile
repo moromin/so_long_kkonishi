@@ -74,4 +74,4 @@ norm:
 	norminette $(LIBFTPATH)
 	norminette $(GNLPATH)
 
-.PHONY: all clean fclean re bonus norm $(NAME)
+.PHONY: all clean fclean re bonus norm

@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:44 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/17 13:19:32 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/20 15:58:22 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	loop_func(t_vars *vars)
 
 	count++;
 	rendering_main(vars, &vars->img, count);
+	if (count >= 1000)
+		count = 2;
 	return (0);
 }
 
