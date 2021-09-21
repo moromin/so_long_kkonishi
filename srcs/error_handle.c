@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:38 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 14:44:08 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:07:03 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	print_args_err(t_vars *vars)
 		ft_putstr_fd("Map is not rectangular.\n", 2);
 	if (vars->err == INVALID_EXTENSION)
 		ft_putstr_fd("Invalid extension file.\n", 2);
+	if (vars->err == MAP_IS_TOO_BIG)
+		ft_putstr_fd("Map is too big to display.\n", 2);
 	if (vars->err == NOT_CLOSED_BY_WALL)
 	{
 		free_map(vars);

@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:13 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 13:26:32 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:03:17 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_vars
 }	t_vars;
 
 // main.c
+void	close_check(int status, t_vars *vars, int first);
 int		close_window(t_vars *vars);
 
 // arg_check.c
@@ -88,9 +89,9 @@ void	rendering_main(t_vars *vars, t_data *img, int count);
 void	moving_player(int code, t_vars *vars);
 
 // utils.c
+int		map_size_check(int x, int y);
 void	init_map(t_vars *vars);
 void	free_map(t_vars *vars);
-void	free_all_ptr(t_vars *vars);
 void	tile_path_set(t_vars *vars);
 void	img_ptr_destroy(t_vars *vars);
 

@@ -6,11 +6,19 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:50 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 14:46:19 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:54:25 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int	map_size_check(int x, int y)
+{
+	if (x > DISP_WIDTH_MAX / TILESIZE || y + 1 > DISP_HEIGHT_MAX / TILESIZE)
+		return (-1);
+	else
+		return (0);
+}
 
 void	init_map(t_vars *vars)
 {

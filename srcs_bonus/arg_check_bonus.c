@@ -6,13 +6,13 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 18:04:48 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:53:10 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-int	line_check(char *line, t_vars *vars, size_t count)
+int	line_check(char *line, t_vars *vars, int count)
 {
 	size_t			i;
 	static size_t	line_size;
@@ -31,7 +31,7 @@ int	line_check(char *line, t_vars *vars, size_t count)
 		if (line[i] == 'T')
 			vars->map.t_flag++;
 		i++;
-		if (map_size_check(i, (int)count) < 0)
+		if (map_size_check(i, count) < 0)
 			return (MAP_IS_TOO_BIG);
 	}
 	if (count > 0 && line_size != ft_strlen(line))

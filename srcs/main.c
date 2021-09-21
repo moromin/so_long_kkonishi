@@ -6,11 +6,23 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:44 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 14:46:19 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:16:49 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	close_check(int status, t_vars *vars, int first)
+{
+	if (status == -1)
+	{
+		if (!first)
+			free_map(vars);
+		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("File close error", 2);
+		exit(EXIT_FAILURE);
+	}	
+}
 
 int	close_window(t_vars *vars)
 {

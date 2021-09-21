@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:20 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 18:06:58 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:17:05 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	close_check(int status, t_vars *vars, int first)
 	{
 		if (!first)
 			free_map(vars);
+		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("File close error", 2);
 		exit(EXIT_FAILURE);
 	}	
 }
@@ -80,14 +82,14 @@ int	print_args_err(t_vars *vars)
 	if (vars->err == INVALID_EXTENSION)
 		ft_putstr_fd("Invalid extension file.\n", 2);
 	if (vars->err == NOT_CLOSED_BY_WALL)
-	{
-		free_map(vars);
 		ft_putstr_fd("Map is not closed by wall.\n", 2);
-	}
 	if (vars->err == MAP_IS_TOO_SMALL)
-	{
 		ft_putstr_fd("Map is too small.\n", 2);
+	if (vars->err == MAP_IS_TOO_BIG)
+		ft_putstr_fd("Map is too big to display.\n", 2);
+	if (vars->err == NOT_CLOSED_BY_WALL)
+		free_map(vars);
+	if (vars->err == MAP_IS_TOO_SMALL)
 		close_window(vars);
-	}
 	return (EXIT_FAILURE);
 }

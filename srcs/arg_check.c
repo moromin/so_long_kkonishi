@@ -6,13 +6,13 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:35 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 14:49:38 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:04:11 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	line_check(char *line, t_vars *vars, size_t count)
+int	line_check(char *line, t_vars *vars, int count)
 {
 	size_t			i;
 	static size_t	line_size;
@@ -29,6 +29,8 @@ int	line_check(char *line, t_vars *vars, size_t count)
 		if (line[i] == 'P')
 			vars->map.p_flag++;
 		i++;
+		if (map_size_check(i, count) < 0)
+			return (MAP_IS_TOO_BIG);
 	}
 	if (count > 0 && line_size != ft_strlen(line))
 		return (NOT_RECTANGULAR);
@@ -59,7 +61,7 @@ int	storage_map(char *filename, size_t height, t_vars *vars)
 			break ;
 		i++;
 	}
-	close(fd);
+	close_check(close(fd), vars, 0);
 	map_gnl_check(vars, i);
 	return (-1);
 }
@@ -96,27 +98,23 @@ int	map_check(char *filename, t_vars *vars)
 {
 	int		fd;
 	char	*line;
-	size_t	i;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (FILE_OPEN_ERROR);
 	init_map(vars);
-	i = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		vars->err = line_check(line, vars, i);
-		vars->map.width = ft_strlen(line);
+		vars->err = line_check(line, vars, vars->map.height++);
+		vars->map.width = (int)ft_strlen(line);
 		free(line);
-		vars->map.height++;
-		i++;
 	}
 	if (!vars->map.c_flag || !vars->map.e_flag || !vars->map.p_flag)
 		vars->err = LACK_ESSENTIAL_CHAR;
-	close(fd);
+	close_check(close(fd), vars, 1);
 	vars->err = closed_check(filename, vars->map.height, vars->map.width, vars);
 	return (vars->err);
 }
