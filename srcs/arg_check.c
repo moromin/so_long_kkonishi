@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:35 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 13:19:41 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 14:49:38 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	storage_map(char *filename, size_t height, t_vars *vars)
 			break ;
 		i++;
 	}
-	map_gnl_check(vars, i);
 	close(fd);
+	map_gnl_check(vars, i);
 	return (-1);
 }
 

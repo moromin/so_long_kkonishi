@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:32 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 12:40:45 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 14:54:01 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_map(t_vars *vars)
 
 void	free_map(t_vars *vars)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < vars->map.height)
@@ -34,13 +34,6 @@ void	free_map(t_vars *vars)
 		i++;
 	}
 	free(vars->map.map);
-}
-
-void	free_all_ptr(t_vars *vars)
-{
-	free(vars->img.img);
-	free(vars->mlx);
-	free(vars->win);
 }
 
 int	extension_check(char *filename)

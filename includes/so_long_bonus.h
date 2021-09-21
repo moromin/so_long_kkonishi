@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/17 13:17:00 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:26:22 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ typedef struct s_data
 
 typedef struct s_map
 {
-	size_t	width;
-	size_t	height;
+	int		width;
+	int		height;
 	char	**map;
 	int		c_flag;
 	int		e_flag;
@@ -110,6 +110,10 @@ typedef struct s_vars
 int		args_check(int argc, char *argv[], t_vars *vars);
 
 // error_handle.c
+void	my_mlx_error_handle(t_vars *vars, void *ptr, int mlx_type);
+int		map_size_check(int x, int y);
+void	close_check(int status, t_vars *vars, int first);
+void	map_gnl_check(t_vars *vars, int i);
 int		print_args_err(t_vars *vars);
 
 // rendering.c
@@ -129,7 +133,6 @@ void	string_put_display(t_vars *vars);
 
 // tile_setting.c
 void	tile_path_set(t_vars *vars);
-void	img_ptr_destroy(t_vars *vars);
 
 // destroy_ptr.c
 int		close_window(t_vars *vars);
@@ -139,12 +142,17 @@ void	destroy_enemy(t_vars *vars);
 
 // sprite_player_bonus.c
 void	sprite_player(t_vars *vars, t_data *img, int i, int j);
+void	player_sprite_set_1(t_vars *vars);
+void	player_sprite_set_2(t_vars *vars);
 
 // sprite_exit_bonus.c
 void	sprite_exit(t_vars *vars, t_data *img, int i, int j);
+void	exit_sprite_set(t_vars *vars);
 
 // sprite_enemy_bonus.c
 void	sprite_enemy(t_vars *vars, t_data *img, int i, int j);
+void	enemy_sprite_set_1(t_vars *vars);
+void	enemy_sprite_set_2(t_vars *vars);
 
 // enemy_moving_bonus.c
 void	moving_enemy(t_vars *vars);

@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:27 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/06 20:58:32 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:25:19 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,42 @@ void	sprite_player(t_vars *vars, t_data *img, int i, int j)
 	if (key == W_KEY || key == A_KEY || key == S_KEY || key == D_KEY)
 		mlx_put_image_to_window(vars->mlx, vars->win, img_ptr,
 			j * TILESIZE, i * TILESIZE);
+}
+
+void	player_sprite_set_1(t_vars *vars)
+{
+	vars->img.p_w_1_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_W_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_w_2_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_W_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_w_3_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_W_3,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_a_1_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_A_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_a_2_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_A_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_a_3_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_A_3,
+			&vars->img.width, &vars->img.height);
+	if (!vars->img.p_w_1_img || !vars->img.p_w_2_img || !vars->img.p_w_3_img
+		|| !vars->img.p_a_1_img || !vars->img.p_a_2_img || !vars->img.p_a_3_img)
+		my_mlx_error_handle(&vars, NULL, MLX_XPM_IMAGE);
+}
+
+void	player_sprite_set_2(t_vars *vars)
+{
+	vars->img.p_d_1_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_D_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_d_2_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_D_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_d_3_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_D_3,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_s_1_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_S_1,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_s_2_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_S_2,
+			&vars->img.width, &vars->img.height);
+	vars->img.p_s_3_img = mlx_xpm_file_to_image(vars->mlx, PLAYER_S_3,
+			&vars->img.width, &vars->img.height);
+	if (!vars->img.p_d_1_img || !vars->img.p_d_2_img || !vars->img.p_d_3_img
+		|| !vars->img.p_s_1_img || !vars->img.p_s_2_img || !vars->img.p_s_3_img)
+		my_mlx_error_handle(&vars, NULL, MLX_XPM_IMAGE);
 }

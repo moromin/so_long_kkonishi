@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:23 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/17 13:37:42 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:09:12 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,11 @@ int	main(int argc, char *argv[])
 	width = (vars.map.width - 1) * TILESIZE;
 	height = vars.map.height * TILESIZE;
 	vars.mlx = mlx_init();
+	my_mlx_error_handle(&vars, vars.mlx, MLX_INIT);
 	screen_size_check(&vars, width, height);
 	tile_path_set(&vars);
 	vars.win = mlx_new_window(vars.mlx, width, height + 20, "so_long");
+	my_mlx_error_handle(&vars, vars.win, MLX_NEW_WIN);
 	if (width < 288)
 	{
 		vars.err = MAP_IS_TOO_SMALL;

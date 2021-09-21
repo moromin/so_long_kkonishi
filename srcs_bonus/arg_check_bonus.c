@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/07 23:56:09 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:04:48 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	line_check(char *line, t_vars *vars, size_t count)
 		if (line[i] == 'T')
 			vars->map.t_flag++;
 		i++;
+		if (map_size_check(i, (int)count) < 0)
+			return (MAP_IS_TOO_BIG);
 	}
 	if (count > 0 && line_size != ft_strlen(line))
 		return (NOT_RECTANGULAR);
@@ -38,15 +40,15 @@ int	line_check(char *line, t_vars *vars, size_t count)
 	return (vars->err);
 }
 
-int	storage_map(char *filename, size_t height, t_vars *vars)
+int	storage_map(char *filename, int height, t_vars *vars)
 {
 	int		fd;
-	size_t	i;
+	int		i;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (FILE_OPEN_ERROR);
-	vars->map.map = (char **)malloc(sizeof(char *) * (height + 1));
+	vars->map.map = (char **)ft_calloc((height + 1), sizeof(char *));
 	if (vars->map.map == NULL)
 	{
 		close(fd);
@@ -61,14 +63,15 @@ int	storage_map(char *filename, size_t height, t_vars *vars)
 			break ;
 		i++;
 	}
-	close(fd);
+	close_check(close(fd), vars, 0);
+	map_gnl_check(vars, i);
 	return (-1);
 }
 
-int	closed_check(char *filename, size_t height, size_t width, t_vars *vars)
+int	closed_check(char *filename, int height, int width, t_vars *vars)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	if (vars->err < 0)
 		vars->err = storage_map(filename, height, vars);
@@ -97,27 +100,24 @@ int	map_check(char *filename, t_vars *vars)
 {
 	int		fd;
 	char	*line;
-	size_t	i;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (FILE_OPEN_ERROR);
 	init_map(vars);
-	i = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		vars->err = line_check(line, vars, i++);
-		vars->map.width = ft_strlen(line);
+		vars->err = line_check(line, vars, vars->map.height++);
+		vars->map.width = (int)ft_strlen(line);
 		free(line);
-		vars->map.height++;
 	}
 	if (!vars->map.c_flag || !vars->map.e_flag
 		|| !vars->map.p_flag || !vars->map.t_flag)
 		vars->err = LACK_ESSENTIAL_CHAR_BONUS;
-	close(fd);
+	close_check(close(fd), vars, 0);
 	vars->err = closed_check(filename, vars->map.height, vars->map.width, vars);
 	return (vars->err);
 }

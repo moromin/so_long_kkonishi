@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:18 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/15 00:23:16 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:16:54 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	string_bar_put(t_vars *vars)
 {
-	size_t	x;
-	size_t	y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = vars->map.height * TILESIZE;

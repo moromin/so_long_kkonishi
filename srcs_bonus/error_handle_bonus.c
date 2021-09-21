@@ -6,11 +6,63 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:20 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/13 23:25:48 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:06:58 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+void	my_mlx_error_handle(t_vars *vars, void *ptr, int mlx_type)
+{
+	if (ptr == NULL)
+	{
+		ft_putstr_fd("Error\n", 2);
+		if (mlx_type >= MLX_INIT)
+			free_map(vars);
+		if (mlx_type >= MLX_XPM_IMAGE)
+		{
+			img_ptr_destroy(vars);
+			mlx_destroy_display(vars->mlx);
+			free(vars->mlx);
+		}
+		if (mlx_type == MLX_INIT)
+			ft_putstr_fd("mlx_init() return NULL.\n", 2);
+		else if (mlx_type == MLX_XPM_IMAGE)
+			ft_putstr_fd("mlx_xpm_file_to_image() return NULL.\n", 2);
+		else if (mlx_type == MLX_NEW_WIN)
+			ft_putstr_fd("mlx_new_window() return NULL.\n", 2);
+		exit(EXIT_FAILURE);
+	}
+}
+
+int	map_size_check(int x, int y)
+{
+	if (x > DISP_WIDTH_MAX / TILESIZE || y + 1 > DISP_HEIGHT_MAX / TILESIZE)
+		return (-1);
+	else
+		return (0);
+}
+
+void	close_check(int status, t_vars *vars, int first)
+{
+	if (status == -1)
+	{
+		if (!first)
+			free_map(vars);
+		exit(EXIT_FAILURE);
+	}	
+}
+
+void	map_gnl_check(t_vars *vars, int i)
+{
+	if (i != vars->map.height)
+	{
+		free_map(vars);
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("GNL malloc error.\n", 2);
+		exit(EXIT_FAILURE);
+	}
+}
 
 int	print_args_err(t_vars *vars)
 {
