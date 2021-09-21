@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:13 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 12:38:09 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:06:07 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_data
 
 typedef struct s_map
 {
-	size_t	width;
-	size_t	height;
+	int		width;
+	int		height;
 	char	**map;
 	int		c_flag;
 	int		e_flag;
@@ -76,6 +76,7 @@ int		close_window(t_vars *vars);
 int		args_check(int argc, char *argv[], t_vars *vars);
 
 // error_handle.c
+void	map_gnl_check(t_vars *vars, int i);
 void	mlx_error_handle(t_vars *vars, int mlx_type);
 int		extension_check(char *filename);
 void	screen_size_check(t_vars *vars, int width, int height);

@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:35 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 12:29:10 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:19:41 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	line_check(char *line, t_vars *vars, size_t count)
 int	storage_map(char *filename, size_t height, t_vars *vars)
 {
 	int		fd;
-	size_t	i;
+	int		i;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
@@ -59,14 +59,15 @@ int	storage_map(char *filename, size_t height, t_vars *vars)
 			break ;
 		i++;
 	}
+	map_gnl_check(vars, i);
 	close(fd);
 	return (-1);
 }
 
-int	closed_check(char *filename, size_t height, size_t width, t_vars *vars)
+int	closed_check(char *filename, int height, int width, t_vars *vars)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	if (vars->err < 0)
 		vars->err = storage_map(filename, height, vars);

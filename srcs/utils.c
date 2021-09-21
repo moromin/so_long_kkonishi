@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:50 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/17 13:17:16 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:03:18 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_map(t_vars *vars)
 
 void	free_map(t_vars *vars)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < vars->map.height)
@@ -33,13 +33,6 @@ void	free_map(t_vars *vars)
 		i++;
 	}
 	free(vars->map.map);
-}
-
-void	free_all_ptr(t_vars *vars)
-{
-	free(vars->img.img);
-	free(vars->mlx);
-	free(vars->win);
 }
 
 void	tile_path_set(t_vars *vars)

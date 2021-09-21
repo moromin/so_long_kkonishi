@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:44 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/20 15:58:22 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:58:52 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	close_window(t_vars *vars)
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
-	exit(0);
+	exit(EXIT_SUCCESS);
 	return (0);
 }
 

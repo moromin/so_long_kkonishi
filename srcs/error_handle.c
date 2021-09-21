@@ -6,16 +6,27 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:38 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 12:39:52 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:08:32 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	mlx_error_handle(t_vars *vars, int mlx_type)
+void	map_gnl_check(t_vars *vars, int i)
 {
-	
+	if (i != vars->map.height)
+	{
+		free_map(vars);
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("GNL malloc error.\n", 2);
+		exit(EXIT_FAILURE);
+	}
 }
+
+// void	mlx_error_handle(t_vars *vars, int mlx_type)
+// {
+	
+// }
 
 int	extension_check(char *filename)
 {
