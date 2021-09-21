@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:18 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 18:16:54 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 19:58:36 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,37 @@ void	map_clear_string_put(t_vars *vars)
 			vars->map.height * TILESIZE + 15, COLOR, "YOU LOSE...");
 }
 
+void	*exit_if_fail(void *ptr, t_vars *vars)
+{
+	if (ptr == NULL)
+	{
+		close_window(vars);
+		exit(EXIT_FAILURE);
+	}
+	return (ptr);
+}
+
 void	string_put_display(t_vars *vars)
 {
 	char	*step;
 	char	*all;
 	char	*current;
+	int		height;
 
 	string_bar_put(vars);
 	if (vars->player.clear == 1 || vars->player.clear == -1)
 		return (map_clear_string_put(vars));
-	step = ft_itoa(vars->player.step);
-	all = ft_itoa(vars->map.collectibles);
-	current = ft_itoa(vars->map.collectibles - vars->map.c_flag);
-	mlx_string_put(vars->mlx, vars->win, 5, vars->map.height * TILESIZE + 15,
-		COLOR, DISP_STEP);
-	mlx_string_put(vars->mlx, vars->win, 90, vars->map.height * TILESIZE + 15,
-		COLOR, step);
-	mlx_string_put(vars->mlx, vars->win, 130, vars->map.height * TILESIZE + 15,
-		COLOR, DISP_COLLECTIBLES);
-	mlx_string_put(vars->mlx, vars->win, 220, vars->map.height * TILESIZE + 15,
-		COLOR, current);
-	mlx_string_put(vars->mlx, vars->win, 230, vars->map.height * TILESIZE + 15,
-		COLOR, "/");
-	mlx_string_put(vars->mlx, vars->win, 240, vars->map.height * TILESIZE + 15,
-		COLOR, all);
+	step = exit_if_fail(ft_itoa(vars->player.step), vars);
+	all = exit_if_fail(ft_itoa(vars->map.collectibles), vars);
+	current = exit_if_fail(ft_itoa(vars->map.collectibles - vars->map.c_flag),
+			vars);
+	height = vars->map.height * TILESIZE + 15;
+	mlx_string_put(vars->mlx, vars->win, 5, height, COLOR, DISP_STEP);
+	mlx_string_put(vars->mlx, vars->win, 90, height, COLOR, step);
+	mlx_string_put(vars->mlx, vars->win, 130, height, COLOR, DISP_COLLECTIBLES);
+	mlx_string_put(vars->mlx, vars->win, 220, height, COLOR, current);
+	mlx_string_put(vars->mlx, vars->win, 230, height, COLOR, "/");
+	mlx_string_put(vars->mlx, vars->win, 240, height, COLOR, all);
 	free(step);
 	free(all);
 	free(current);
