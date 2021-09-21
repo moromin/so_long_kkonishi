@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:30 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 18:25:43 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:47:55 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	tile_path_set(t_vars *vars)
 			&vars->img.width, &vars->img.height);
 	if (!vars->img.s_img || !vars->img.w_img
 		|| !vars->img.c_img || !vars->img.back)
-		my_mlx_error_handle(&vars, NULL, MLX_XPM_IMAGE);
+		my_mlx_error_handle(vars, NULL, MLX_XPM_IMAGE);
 	exit_sprite_set(vars);
 	player_sprite_set_1(vars);
 	player_sprite_set_2(vars);

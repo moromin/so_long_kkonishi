@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:27 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 18:25:19 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 18:48:23 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	player_sprite_set_1(t_vars *vars)
 			&vars->img.width, &vars->img.height);
 	if (!vars->img.p_w_1_img || !vars->img.p_w_2_img || !vars->img.p_w_3_img
 		|| !vars->img.p_a_1_img || !vars->img.p_a_2_img || !vars->img.p_a_3_img)
-		my_mlx_error_handle(&vars, NULL, MLX_XPM_IMAGE);
+		my_mlx_error_handle(vars, NULL, MLX_XPM_IMAGE);
 }
 
 void	player_sprite_set_2(t_vars *vars)
@@ -107,5 +107,5 @@ void	player_sprite_set_2(t_vars *vars)
 			&vars->img.width, &vars->img.height);
 	if (!vars->img.p_d_1_img || !vars->img.p_d_2_img || !vars->img.p_d_3_img
 		|| !vars->img.p_s_1_img || !vars->img.p_s_2_img || !vars->img.p_s_3_img)
-		my_mlx_error_handle(&vars, NULL, MLX_XPM_IMAGE);
+		my_mlx_error_handle(vars, NULL, MLX_XPM_IMAGE);
 }
