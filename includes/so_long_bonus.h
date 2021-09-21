@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 18:26:22 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 22:36:53 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int		args_check(int argc, char *argv[], t_vars *vars);
 
 // error_handle.c
 void	my_mlx_error_handle(t_vars *vars, void *ptr, int mlx_type);
-int		map_size_check(int x, int y);
+int		is_valid_map_size(int x, int y);
 void	close_check(int status, t_vars *vars, int first);
 void	map_gnl_check(t_vars *vars, int i);
 int		print_args_err(t_vars *vars);
@@ -124,8 +124,7 @@ void	moving_player(int code, t_vars *vars);
 // utils.c
 void	init_map(t_vars *vars);
 void	free_map(t_vars *vars);
-void	free_all_ptr(t_vars *vars);
-int		extension_check(char *filename);
+int		is_valid_extension(char *filename);
 void	screen_size_check(t_vars *vars, int width, int height);
 
 // display_bonus.c

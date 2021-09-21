@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:20 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 19:17:05 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 22:31:57 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	my_mlx_error_handle(t_vars *vars, void *ptr, int mlx_type)
 	}
 }
 
-int	map_size_check(int x, int y)
+int	is_valid_map_size(int x, int y)
 {
 	if (x > DISP_WIDTH_MAX / TILESIZE || y + 1 > DISP_HEIGHT_MAX / TILESIZE)
-		return (-1);
-	else
 		return (0);
+	else
+		return (1);
 }
 
 void	close_check(int status, t_vars *vars, int first)

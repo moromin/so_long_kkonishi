@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 19:53:24 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 22:41:02 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	line_check(char *line, t_vars *vars, int count)
 		if (line[i] == 'T')
 			vars->map.t_flag++;
 		i++;
-		if (map_size_check((int)i, count) < 0)
+		if (!is_valid_map_size((int)i, count))
 			return (MAP_IS_TOO_BIG);
 	}
 	if (count > 0 && line_size != ft_strlen(line))
@@ -68,15 +68,11 @@ int	storage_map(char *filename, int height, t_vars *vars)
 	return (-1);
 }
 
-int	closed_check(char *filename, int height, int width, t_vars *vars)
+int	closed_check(int height, int width, t_vars *vars)
 {
 	int	i;
 	int	j;
 
-	if (vars->err < 0)
-		vars->err = storage_map(filename, height, vars);
-	if (vars->err >= 0)
-		return (vars->err);
 	i = 0;
 	while (i < height)
 	{
@@ -118,7 +114,6 @@ int	map_check(char *filename, t_vars *vars)
 		|| !vars->map.p_flag || !vars->map.t_flag)
 		vars->err = LACK_ESSENTIAL_CHAR_BONUS;
 	close_check(close(fd), vars, 0);
-	vars->err = closed_check(filename, vars->map.height, vars->map.width, vars);
 	return (vars->err);
 }
 
@@ -130,11 +125,16 @@ int	args_check(int argc, char *argv[], t_vars *vars)
 		vars->err = ARGS_NUM_ERROR;
 		return (vars->err);
 	}
-	if (extension_check(argv[1]) < 0)
+	if (!is_valid_extension(argv[1]))
 	{
 		vars->err = INVALID_EXTENSION;
 		return (vars->err);
 	}
 	vars->err = map_check(argv[1], vars);
+	if (vars->err < 0)
+		vars->err = storage_map(argv[1], vars->map.height, vars);
+	if (vars->err < 0)
+		vars->err = closed_check(vars->map.height, vars->map.width,
+				vars);
 	return (vars->err);
 }

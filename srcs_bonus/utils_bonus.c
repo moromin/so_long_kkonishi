@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:32 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 14:54:01 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 22:37:49 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ void	free_map(t_vars *vars)
 	free(vars->map.map);
 }
 
-int	extension_check(char *filename)
+int	is_valid_extension(char *filename)
 {
 	char	*extension;
 
 	extension = ft_strchr(filename, '.');
 	if (extension == NULL)
-		return (-1);
+		return (0);
 	else
 	{
 		if (ft_strcmp(extension, ".ber"))
-			return (-1);
+			return (0);
 	}
-	return (0);
+	return (1);
 }
 
 void	screen_size_check(t_vars *vars, int width, int height)
