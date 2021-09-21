@@ -6,13 +6,13 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 17:50:17 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/07/18 16:21:40 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/08/08 13:40:46 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	sign_check(char s)
+static int	sign_check(char s)
 {
 	if (s == '-')
 		return (-1);
@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 	if (str[i] == '+' || str[i] == '-')
 		sign = sign_check(str[i++]);
 	res = 0;
-	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+	while (ft_isdigit(str[i]))
 	{
 		if ((res * 10 + (str[i] - '0')) / 10 != res)
 		{

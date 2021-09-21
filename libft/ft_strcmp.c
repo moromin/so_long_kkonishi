@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/01 18:06:06 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/07/07 21:21:24 by kkonishi         ###   ########.fr       */
+/*   Created: 2021/09/16 12:03:05 by kkonishi          #+#    #+#             */
+/*   Updated: 2021/09/16 17:14:33 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	char	num[30];
-	int		count;
+	const unsigned char	*p1;
+	const unsigned char	*p2;
+	int					i;
 
-	count = 0;
-	if (n < 0)
-		write(fd, "-", 1);
-	if (n == 0)
-		write(fd, "0", 1);
-	while (n)
+	p1 = (const unsigned char *)s1;
+	p2 = (const unsigned char *)s2;
+	i = 0;
+	while (p1[i] == p2[i])
 	{
-		if (n >= 0)
-			num[count] = '0' + (n % 10);
-		else
-			num[count] = '0' - (n % 10);
-		n /= 10;
-		count++;
+		if (p1[i] == '\0' || p2[i] == '\0')
+			return (0);
+		i++;
 	}
-	while (count > 0)
-		write(fd, &num[count-- - 1], 1);
+	return (p1[i] - p2[i]);
 }

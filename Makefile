@@ -42,7 +42,7 @@ $(NAME): $(MLXPATH) $(OBJS)
 	make -C $(MLXPATH)
 	make -C $(LIBFTPATH)
 	make -C $(GNLPATH)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFTFLAG) $(GNLFLAG) $(MLXFLAG) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTFLAG) $(GNLFLAG) $(MLXFLAG) -o $(NAME) -I$(INCDIR)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:35 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/08 00:07:01 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:29:10 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	storage_map(char *filename, size_t height, t_vars *vars)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (FILE_OPEN_ERROR);
-	vars->map.map = (char **)malloc(sizeof(char *) * (height + 1));
+	vars->map.map = (char **)ft_calloc((height + 1), sizeof(char *));
 	if (vars->map.map == NULL)
 	{
 		close(fd);
