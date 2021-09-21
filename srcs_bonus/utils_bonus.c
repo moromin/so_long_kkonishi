@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:32 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/17 13:37:42 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:40:45 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	extension_check(char *filename)
 		return (-1);
 	else
 	{
-		if (ft_strncmp(extension, ".ber", 4))
+		if (ft_strcmp(extension, ".ber"))
 			return (-1);
 	}
 	return (0);
