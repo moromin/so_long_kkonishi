@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:06 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/15 00:10:47 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 14:26:22 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@
 # define MAP_IS_TOO_SMALL 8
 
 # define MALLOC_ERROR 10
+
+# define MLX_INIT 11
+# define MLX_XPM_IMAGE 12
+# define MLX_NEW_WIN 13
 
 # define TILESIZE 48
 

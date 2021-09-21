@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:50 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 13:03:18 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 14:46:19 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ void	tile_path_set(t_vars *vars)
 			&vars->img.width, &vars->img.height);
 	vars->img.p_img = mlx_xpm_file_to_image(vars->mlx, vars->map.player,
 			&vars->img.width, &vars->img.height);
+	if (!vars->img.s_img || !vars->img.w_img || !vars->img.p_img
+		|| !vars->img.c_img || !vars->img.e_img)
+		my_mlx_error_handle(vars, NULL, MLX_XPM_IMAGE);
 }
 
 void	img_ptr_destroy(t_vars *vars)

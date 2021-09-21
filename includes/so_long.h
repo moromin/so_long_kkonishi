@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:13 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 13:06:07 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:26:32 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		args_check(int argc, char *argv[], t_vars *vars);
 
 // error_handle.c
 void	map_gnl_check(t_vars *vars, int i);
-void	mlx_error_handle(t_vars *vars, int mlx_type);
+void	my_mlx_error_handle(t_vars *vars, void *ptr, int mlx_type);
 int		extension_check(char *filename);
 void	screen_size_check(t_vars *vars, int width, int height);
 int		print_args_err(t_vars *vars);

@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:38 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 13:08:32 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/21 14:44:08 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,28 @@ void	map_gnl_check(t_vars *vars, int i)
 	}
 }
 
-// void	mlx_error_handle(t_vars *vars, int mlx_type)
-// {
-	
-// }
+void	my_mlx_error_handle(t_vars *vars, void *ptr, int mlx_type)
+{
+	if (ptr == NULL)
+	{
+		ft_putstr_fd("Error\n", 2);
+		if (mlx_type >= MLX_INIT)
+			free_map(vars);
+		if (mlx_type >= MLX_XPM_IMAGE)
+		{
+			img_ptr_destroy(vars);
+			mlx_destroy_display(vars->mlx);
+			free(vars->mlx);
+		}
+		if (mlx_type == MLX_INIT)
+			ft_putstr_fd("mlx_init() return NULL.\n", 2);
+		else if (mlx_type == MLX_XPM_IMAGE)
+			ft_putstr_fd("mlx_xpm_file_to_image() return NULL.\n", 2);
+		else if (mlx_type == MLX_NEW_WIN)
+			ft_putstr_fd("mlx_new_window() return NULL.\n", 2);
+		exit(EXIT_FAILURE);
+	}
+}
 
 int	extension_check(char *filename)
 {
