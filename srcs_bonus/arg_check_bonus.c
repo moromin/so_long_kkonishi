@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 22:41:02 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/25 12:54:19 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	line_check(char *line, t_vars *vars, int count)
 {
-	size_t			i;
+	int				i;
 	static size_t	line_size;
 
 	i = 0;
@@ -31,7 +31,7 @@ int	line_check(char *line, t_vars *vars, int count)
 		if (line[i] == 'T')
 			vars->map.t_flag++;
 		i++;
-		if (!is_valid_map_size((int)i, count))
+		if (!is_valid_map_size(i, count))
 			return (MAP_IS_TOO_BIG);
 	}
 	if (count > 0 && line_size != ft_strlen(line))
