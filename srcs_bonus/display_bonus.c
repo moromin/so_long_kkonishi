@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:18 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 19:58:36 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/29 17:40:14 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,21 @@ void	string_put_display(t_vars *vars)
 	char	*current;
 	int		height;
 
+	height = vars->map.height * TILESIZE + 15;
 	string_bar_put(vars);
 	if (vars->player.clear == 1 || vars->player.clear == -1)
 		return (map_clear_string_put(vars));
+	mlx_string_put(vars->mlx, vars->win, 5, height, COLOR, DISP_STEP);
 	step = exit_if_fail(ft_itoa(vars->player.step), vars);
-	all = exit_if_fail(ft_itoa(vars->map.collectibles), vars);
+	mlx_string_put(vars->mlx, vars->win, 90, height, COLOR, step);
+	free(step);
+	mlx_string_put(vars->mlx, vars->win, 130, height, COLOR, DISP_COLLECTIBLES);
 	current = exit_if_fail(ft_itoa(vars->map.collectibles - vars->map.c_flag),
 			vars);
-	height = vars->map.height * TILESIZE + 15;
-	mlx_string_put(vars->mlx, vars->win, 5, height, COLOR, DISP_STEP);
-	mlx_string_put(vars->mlx, vars->win, 90, height, COLOR, step);
-	mlx_string_put(vars->mlx, vars->win, 130, height, COLOR, DISP_COLLECTIBLES);
 	mlx_string_put(vars->mlx, vars->win, 220, height, COLOR, current);
-	mlx_string_put(vars->mlx, vars->win, 230, height, COLOR, "/");
-	mlx_string_put(vars->mlx, vars->win, 240, height, COLOR, all);
-	free(step);
-	free(all);
 	free(current);
+	mlx_string_put(vars->mlx, vars->win, 230, height, COLOR, "/");
+	all = exit_if_fail(ft_itoa(vars->map.collectibles), vars);
+	mlx_string_put(vars->mlx, vars->win, 240, height, COLOR, all);
+	free(all);
 }
