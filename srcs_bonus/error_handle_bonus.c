@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:20 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 22:31:57 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/30 17:54:15 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ int	print_args_err(t_vars *vars)
 		ft_putstr_fd("Map is too small.\n", 2);
 	if (vars->err == MAP_IS_TOO_BIG)
 		ft_putstr_fd("Map is too big to display.\n", 2);
-	if (vars->err == NOT_CLOSED_BY_WALL)
-		free_map(vars);
+	if (vars->err == TOO_MUCH_PLAYERS)
+		ft_putstr_fd("There are too many players.\n", 2);
 	if (vars->err == MAP_IS_TOO_SMALL)
 		close_window(vars);
 	return (EXIT_FAILURE);

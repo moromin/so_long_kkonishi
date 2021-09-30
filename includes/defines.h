@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:54:06 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/21 17:52:32 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/30 17:48:49 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@
 # define INVALID_EXTENSION 7
 # define MAP_IS_TOO_SMALL 8
 # define MAP_IS_TOO_BIG 9
-
 # define MALLOC_ERROR 10
+# define TOO_MUCH_PLAYERS 11
 
-# define MLX_INIT 11
-# define MLX_XPM_IMAGE 12
-# define MLX_NEW_WIN 13
+# define MLX_INIT 12
+# define MLX_XPM_IMAGE 13
+# define MLX_NEW_WIN 14
 
 # define TILESIZE 48
 # define DISP_WIDTH_MAX 1920

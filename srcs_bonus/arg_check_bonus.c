@@ -6,7 +6,7 @@
 /*   By: kkonishi <kkonishi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 18:55:10 by kkonishi          #+#    #+#             */
-/*   Updated: 2021/09/25 12:54:19 by kkonishi         ###   ########.fr       */
+/*   Updated: 2021/09/30 17:54:01 by kkonishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int	closed_check(int height, int width, t_vars *vars)
 		}
 		i++;
 	}
+	if (vars->err == NOT_CLOSED_BY_WALL)
+		free_map(vars);
 	return (vars->err);
 }
 
@@ -113,6 +115,8 @@ int	map_check(char *filename, t_vars *vars)
 	if (!vars->map.c_flag || !vars->map.e_flag
 		|| !vars->map.p_flag || !vars->map.t_flag)
 		vars->err = LACK_ESSENTIAL_CHAR_BONUS;
+	if (vars->map.p_flag != 1)
+		vars->err = TOO_MUCH_PLAYERS;
 	close_check(close(fd), vars, 0);
 	return (vars->err);
 }
